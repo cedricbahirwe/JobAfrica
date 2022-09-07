@@ -17,6 +17,8 @@
 		CBC2E6B628C8AB7300346EA4 /* JobLessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6B528C8AB7300346EA4 /* JobLessUITests.swift */; };
 		CBC2E6B828C8AB7300346EA4 /* JobLessUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6B728C8AB7300346EA4 /* JobLessUITestsLaunchTests.swift */; };
 		CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6C528C8AD0600346EA4 /* Colors+.swift */; };
+		CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */; };
+		CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6CA28C8B17300346EA4 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		CBC2E6B528C8AB7300346EA4 /* JobLessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLessUITests.swift; sourceTree = "<group>"; };
 		CBC2E6B728C8AB7300346EA4 /* JobLessUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLessUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CBC2E6C528C8AD0600346EA4 /* Colors+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+.swift"; sourceTree = "<group>"; };
+		CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		CBC2E6CA28C8B17300346EA4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			children = (
 				CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */,
 				CBC2E69728C8AB7000346EA4 /* ContentView.swift */,
+				CBC2E6C728C8AF2B00346EA4 /* Views */,
 				CBC2E69928C8AB7300346EA4 /* Assets.xcassets */,
 				CBC2E69E28C8AB7300346EA4 /* Persistence.swift */,
 				CBC2E6C428C8ACFF00346EA4 /* Colors */,
@@ -142,6 +147,15 @@
 				CBC2E6C528C8AD0600346EA4 /* Colors+.swift */,
 			);
 			path = Colors;
+			sourceTree = "<group>";
+		};
+		CBC2E6C728C8AF2B00346EA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */,
+				CBC2E6CA28C8B17300346EA4 /* HomeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,7 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC2E69F28C8AB7300346EA4 /* Persistence.swift in Sources */,
+				CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */,
 				CBC2E69828C8AB7000346EA4 /* ContentView.swift in Sources */,
+				CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */,
 				CBC2E6A228C8AB7300346EA4 /* JobLess.xcdatamodeld in Sources */,
 				CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
