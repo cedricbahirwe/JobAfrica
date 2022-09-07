@@ -19,6 +19,16 @@
 		CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6C528C8AD0600346EA4 /* Colors+.swift */; };
 		CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */; };
 		CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6CA28C8B17300346EA4 /* HomeView.swift */; };
+		CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */; };
+		CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D128C90EC600346EA4 /* JobRowView.swift */; };
+		CBC2E6D428C90EDA00346EA4 /* JobTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */; };
+		CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */; };
+		CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */; };
+		CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */; };
+		CBC2E6E228C9350E00346EA4 /* JobTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E128C9350E00346EA4 /* JobTags.swift */; };
+		CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */; };
+		CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E528C9377700346EA4 /* AppTheme.swift */; };
+		CBC2E6EA28C9383F00346EA4 /* JobSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CBC2E69228C8AB7000346EA4 /* JobLess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobLess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBC2E69228C8AB7000346EA4 /* JobAfrica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobAfrica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLessApp.swift; sourceTree = "<group>"; };
 		CBC2E69728C8AB7000346EA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CBC2E69928C8AB7300346EA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +64,18 @@
 		CBC2E6C528C8AD0600346EA4 /* Colors+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+.swift"; sourceTree = "<group>"; };
 		CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		CBC2E6CA28C8B17300346EA4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CBC2E6CC28C8EE7F00346EA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CBC2E6CD28C8F15B00346EA4 /* JobLess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JobLess.entitlements; sourceTree = "<group>"; };
+		CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailView.swift; sourceTree = "<group>"; };
+		CBC2E6D128C90EC600346EA4 /* JobRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRowView.swift; sourceTree = "<group>"; };
+		CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTagsView.swift; sourceTree = "<group>"; };
+		CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAdvertView.swift; sourceTree = "<group>"; };
+		CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		CBC2E6E128C9350E00346EA4 /* JobTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTags.swift; sourceTree = "<group>"; };
+		CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeToggle.swift; sourceTree = "<group>"; };
+		CBC2E6E528C9377700346EA4 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +116,7 @@
 		CBC2E69328C8AB7000346EA4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CBC2E69228C8AB7000346EA4 /* JobLess.app */,
+				CBC2E69228C8AB7000346EA4 /* JobAfrica.app */,
 				CBC2E6A728C8AB7300346EA4 /* JobLessTests.xctest */,
 				CBC2E6B128C8AB7300346EA4 /* JobLessUITests.xctest */,
 			);
@@ -104,8 +126,12 @@
 		CBC2E69428C8AB7000346EA4 /* JobLess */ = {
 			isa = PBXGroup;
 			children = (
+				CBC2E6CD28C8F15B00346EA4 /* JobLess.entitlements */,
+				CBC2E6CC28C8EE7F00346EA4 /* Info.plist */,
 				CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */,
 				CBC2E69728C8AB7000346EA4 /* ContentView.swift */,
+				CBC2E6E028C9350200346EA4 /* Models */,
+				CBC2E6DB28C915C800346EA4 /* Helpers+Extensions */,
 				CBC2E6C728C8AF2B00346EA4 /* Views */,
 				CBC2E69928C8AB7300346EA4 /* Assets.xcassets */,
 				CBC2E69E28C8AB7300346EA4 /* Persistence.swift */,
@@ -153,9 +179,41 @@
 			isa = PBXGroup;
 			children = (
 				CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */,
+				CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */,
+				CBC2E6D028C90EB500346EA4 /* Reusable Views */,
 				CBC2E6CA28C8B17300346EA4 /* HomeView.swift */,
+				CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */,
+				CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CBC2E6D028C90EB500346EA4 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBC2E6D128C90EC600346EA4 /* JobRowView.swift */,
+				CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */,
+				CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */,
+				CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */,
+				CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */,
+			);
+			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		CBC2E6DB28C915C800346EA4 /* Helpers+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Helpers+Extensions";
+			sourceTree = "<group>";
+		};
+		CBC2E6E028C9350200346EA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBC2E6E128C9350E00346EA4 /* JobTags.swift */,
+				CBC2E6E528C9377700346EA4 /* AppTheme.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,7 +233,7 @@
 			);
 			name = JobLess;
 			productName = JobLess;
-			productReference = CBC2E69228C8AB7000346EA4 /* JobLess.app */;
+			productReference = CBC2E69228C8AB7000346EA4 /* JobAfrica.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CBC2E6A628C8AB7300346EA4 /* JobLessTests */ = {
@@ -290,11 +348,21 @@
 			files = (
 				CBC2E69F28C8AB7300346EA4 /* Persistence.swift in Sources */,
 				CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */,
+				CBC2E6EA28C9383F00346EA4 /* JobSearchView.swift in Sources */,
 				CBC2E69828C8AB7000346EA4 /* ContentView.swift in Sources */,
 				CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */,
 				CBC2E6A228C8AB7300346EA4 /* JobLess.xcdatamodeld in Sources */,
+				CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */,
+				CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */,
+				CBC2E6D428C90EDA00346EA4 /* JobTagsView.swift in Sources */,
+				CBC2E6E228C9350E00346EA4 /* JobTags.swift in Sources */,
 				CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */,
+				CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
+				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
+				CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */,
+				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,
+				CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +449,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -435,7 +503,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -450,12 +518,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JobLess/JobLess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JobLess/Preview Content\"";
 				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JobLess/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JobAfrica;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,7 +538,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abc.incs.cedricbahirwe.JobLess;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JobAfrica;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -479,12 +550,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JobLess/JobLess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JobLess/Preview Content\"";
 				DEVELOPMENT_TEAM = 6V9B6LUW22;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JobLess/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JobAfrica;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -496,7 +570,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.abc.incs.cedricbahirwe.JobLess;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JobAfrica;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
