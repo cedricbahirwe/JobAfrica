@@ -93,6 +93,6 @@ struct LaunchView: View {
                 .foregroundColor(.foreground)
         }
         .opacity(showLaunchView ? 1 : 0)
-        .animation(.easeIn(duration: 2), value: showLaunchView)
+        .animation(.easeIn(duration: 1), value: showLaunchView)
     }
 }

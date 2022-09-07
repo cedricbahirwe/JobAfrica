@@ -19,6 +19,7 @@
 		CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6C528C8AD0600346EA4 /* Colors+.swift */; };
 		CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */; };
 		CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6CA28C8B17300346EA4 /* HomeView.swift */; };
+		CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		CBC2E6CA28C8B17300346EA4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CBC2E6CC28C8EE7F00346EA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CBC2E6CD28C8F15B00346EA4 /* JobLess.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JobLess.entitlements; sourceTree = "<group>"; };
+		CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 		CBC2E69428C8AB7000346EA4 /* JobLess */ = {
 			isa = PBXGroup;
 			children = (
+				CBC2E6CD28C8F15B00346EA4 /* JobLess.entitlements */,
 				CBC2E6CC28C8EE7F00346EA4 /* Info.plist */,
 				CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */,
 				CBC2E69728C8AB7000346EA4 /* ContentView.swift */,
@@ -156,6 +160,7 @@
 			children = (
 				CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */,
 				CBC2E6CA28C8B17300346EA4 /* HomeView.swift */,
+				CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				CBC2E6A228C8AB7300346EA4 /* JobLess.xcdatamodeld in Sources */,
 				CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
+				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JobLess/JobLess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JobLess/Preview Content\"";
@@ -482,6 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JobLess/JobLess.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JobLess/Preview Content\"";

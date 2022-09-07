@@ -24,103 +24,137 @@ enum JobTags: String, Codable, CaseIterable {
         }
     }
 }
+
+struct ThemeToggle: View {
+    init(_ sheme: Binding<ColorScheme?>) {
+        _colorScheme = sheme
+
+    }
+    @Environment(\.colorScheme)
+    private var activeScheme
+    @Binding var colorScheme: ColorScheme?
+    @State private var isDarkModeOn: Bool = false
+    var body: some View {
+        HStack {
+            Label("Light Theme", systemImage: isDarkModeOn ?  "sun.max" : "sun.max.fill")
+                .labelStyle(.iconOnly)
+            Toggle("Theme Toggle", isOn: $isDarkModeOn)
+                .labelsHidden()
+                .scaleEffect(0.8)
+                .tint(.main)
+            Label("Dark Theme", systemImage: isDarkModeOn ? "moon.circle.fill" :  "moon.stars")
+                .labelStyle(.iconOnly)
+                .animation(.easeInOut, value: isDarkModeOn)
+        }
+        .onChange(of: isDarkModeOn) { colorScheme = $0 ? .dark : .light }
+        .onAppear() {
+            colorScheme = activeScheme
+            isDarkModeOn = activeScheme == .dark
+        }
+    }
+}
 struct HomeView: View {
-    @State var selectedJobTag: JobTags = JobTags.all
     @State private var colorScheme: ColorScheme? = nil
+    @State var selectedJobTag: JobTags = JobTags.all
+    @State var showDetailView = false
 
     var body: some View {
-        VStack {
-            HStack(spacing: 20) {
-                Image(systemName: "line.3.horizontal.decrease")
+        ZStack {
+            VStack {
+                HStack(spacing: 20) {
+                    Image(systemName: "line.3.horizontal.decrease")
 
-                Spacer()
+                    Spacer()
 
-                Image(systemName: "magnifyingglass")
+                    Image(systemName: "magnifyingglass")
 
-                Image(systemName: "slider.horizontal.3")
-                    .onTapGesture {
-                        if colorScheme == .dark {
-                            colorScheme = .light
-                        } else {
-                            colorScheme = .dark
-                        }
-                    }
-            }
-            .padding()
-
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Find the best job for you\n\(Text("in Africa 🌍").bold())")
-                    .font(.system(.title, design: .rounded))
-                    .layoutPriority(2)
-
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(0 ..< 10) { item in
-                            VStack(alignment: .leading) {
-                                let img = item < 6 ? item+1 : 1
-                                HStack(spacing: 0) {
-                                    Image("img\(img)")
-                                        .resizable()
-                                        .cornerRadius(5)
-                                        .padding(4)
-                                        .frame(width: 35, height: 35)
-                                        .background(.ultraThickMaterial)
-                                        .cornerRadius(10)
-
-                                    Spacer()
-
-                                    Text("Part time")
-                                        .font(.caption)
-                                        .lineLimit(1)
-                                        .padding(4)
-                                        .background(.background)
-                                        .cornerRadius(4)
-                                        .minimumScaleFactor(0.5)
-                                }
-
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("Graphic Design")
-                                        .fontWeight(.semibold)
-
-                                    Text("Solid Design")
-                                        .font(.system(.caption))
-                                        .opacity(0.9)
-                                }
-                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                                .foregroundColor(.white)
+                    Image(systemName: "slider.horizontal.3")
+                        .onTapGesture {
+                            if colorScheme == .dark {
+                                colorScheme = .light
+                            } else {
+                                colorScheme = .dark
                             }
-                            .padding(10)
-                            .frame(width: 130, height: 130)
-                            .background(Image("img1").resizable())
-                            .cornerRadius(10)
-                            .padding(6)
-                            .background(item%2 == 0 ? Color.white : Color(.systemBackground))
-                            .cornerRadius(10)
                         }
+                }
+                .padding()
+
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Find the best job for you\n\(Text("in Africa 🌍").bold())")
+                        .font(.system(.title, design: .rounded))
+                        .layoutPriority(2)
+
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(0 ..< 10) { item in
+                                VStack(alignment: .leading) {
+                                    let img = item < 6 ? item+1 : 1
+                                    HStack(spacing: 0) {
+                                        Image("img\(img)")
+                                            .resizable()
+                                            .cornerRadius(5)
+                                            .padding(4)
+                                            .frame(width: 35, height: 35)
+                                            .background(.ultraThickMaterial)
+                                            .cornerRadius(10)
+
+                                        Spacer()
+
+                                        Text("Part time")
+                                            .font(.caption)
+                                            .lineLimit(1)
+                                            .padding(4)
+                                            .background(.background)
+                                            .cornerRadius(4)
+                                            .minimumScaleFactor(0.5)
+                                    }
+
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("Graphic Design")
+                                            .fontWeight(.semibold)
+
+                                        Text("Solid Design")
+                                            .font(.system(.caption))
+                                            .opacity(0.9)
+                                    }
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                    .foregroundColor(.white)
+                                }
+                                .padding(10)
+                                .frame(width: 130, height: 130)
+                                .background(Image("img1").resizable())
+                                .cornerRadius(10)
+                                .padding(6)
+                                .background(item%2 == 0 ? Color.white : Color(.systemBackground))
+                                .cornerRadius(10)
+                            }
+                        }
+                    }
+
+                    JobTagsView(JobTags.allCases, selection: $selectedJobTag)
+
+                    ScrollView(.vertical, showsIndicators: false) {
+                        Section {
+                            ForEach(0 ..< 5) { item in
+                                JobRowView()
+                            }
+                        } header: {
+                            Text("Recently Posted")
+                                .font(.title3)
+                                .bold()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+
                     }
                 }
 
-                JobTagsView(JobTags.allCases, selection: $selectedJobTag)
-
-                ScrollView(.vertical, showsIndicators: false) {
-                    Section {
-
-                        ForEach(0 ..< 5) { item in
-                            JobRowView()
-                        }
-                    } header: {
-                        Text("Recently Posted")
-                            .font(.title3)
-                            .bold()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-
-                }
             }
-
+            .padding(.horizontal)
+            .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
         }
-        .padding(.horizontal)
-        .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
+        .sheet(isPresented: $showDetailView) {
+            JobDetailView(isPresented: $showDetailView)
+        }
         .preferredColorScheme(colorScheme)
     }
 }
@@ -139,8 +173,6 @@ struct JobTagsView: View {
 
     private let tags: [JobTags]
     @Binding var selection: JobTags
-
-    @Namespace var animation
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
