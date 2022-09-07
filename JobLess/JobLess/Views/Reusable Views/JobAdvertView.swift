@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JobAdvertView: View {
     let item: Int
-    init(_ item: Int) {
+    init(_ item: Int = 1) {
         self.item = item
     }
     private var imageName: String {

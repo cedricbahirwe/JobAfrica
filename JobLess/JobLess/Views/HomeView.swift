@@ -34,6 +34,7 @@ struct ThemeToggle: View {
     private var activeScheme
     @Binding var colorScheme: ColorScheme?
     @State private var isDarkModeOn: Bool = false
+
     var body: some View {
         HStack {
             Label("Light Theme", systemImage: isDarkModeOn ?  "sun.max" : "sun.max.fill")
@@ -61,54 +62,21 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             VStack {
-                HStack(spacing: 20) {
-                    Image(systemName: "line.3.horizontal.decrease")
+                NavigationBarView(onMenu: {},
+                              onSearch: {},
+                              onFilter: {})
 
-                    Spacer()
-
-                    Image(systemName: "magnifyingglass")
-
-                    Image(systemName: "slider.horizontal.3")
-                        .onTapGesture {
-                            if colorScheme == .dark {
-                                colorScheme = .light
-                            } else {
-                                colorScheme = .dark
-                            }
-                        }
-                }
-                .padding()
 
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Find the best job for you\n\(Text("in Africa 🌍").bold())")
                         .font(.system(.title, design: .rounded))
                         .layoutPriority(2)
 
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(0 ..< 10) { item in
-                                JobAdvertView(item)
-                                .padding(6)
-                                .background(item%2 == 0 ? Color.white : Color(.systemBackground))
-                                .cornerRadius(10)
-                            }
-                        }
-                    }
+                    jobsAdvertsView
 
                     JobTagsView(JobTags.allCases, selection: $selectedJobTag)
 
-                    ScrollView(.vertical, showsIndicators: false) {
-                        Section {
-                            ForEach(0 ..< 5) { item in
-                                JobRowView()
-                            }
-                        } header: {
-                            Text("Recently Posted")
-                                .font(.title3)
-                                .bold()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                    }
+                    recentPostedJobs
                 }
             }
             .padding(.horizontal)
@@ -124,5 +92,34 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+    }
+}
+
+private extension HomeView {
+    var jobsAdvertsView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(0 ..< 10) { item in
+                    JobAdvertView(item)
+                    .padding(6)
+                    .background(item%2 == 0 ? Color.white : Color(.systemBackground))
+                    .cornerRadius(10)
+                }
+            }
+        }
+    }
+    var recentPostedJobs: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            Section {
+                ForEach(0 ..< 5) { item in
+                    JobRowView()
+                }
+            } header: {
+                Text("Recently Posted")
+                    .font(.title3)
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
     }
 }

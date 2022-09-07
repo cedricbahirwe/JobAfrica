@@ -40,6 +40,6 @@ struct JobTagsView: View {
 
 struct JobTagsView_Previews: PreviewProvider {
     static var previews: some View {
-        JobTagsView()
+        JobTagsView(JobTags.allCases, selection: .constant(.all))
     }
 }

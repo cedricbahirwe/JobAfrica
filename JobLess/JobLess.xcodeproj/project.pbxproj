@@ -23,6 +23,7 @@
 		CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D128C90EC600346EA4 /* JobRowView.swift */; };
 		CBC2E6D428C90EDA00346EA4 /* JobTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */; };
 		CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */; };
+		CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		CBC2E6D128C90EC600346EA4 /* JobRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRowView.swift; sourceTree = "<group>"; };
 		CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTagsView.swift; sourceTree = "<group>"; };
 		CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAdvertView.swift; sourceTree = "<group>"; };
+		CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				CBC2E6D128C90EC600346EA4 /* JobRowView.swift */,
 				CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */,
 				CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */,
+				CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */,
 				CBC2E6A228C8AB7300346EA4 /* JobLess.xcdatamodeld in Sources */,
 				CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */,
+				CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */,
 				CBC2E6D428C90EDA00346EA4 /* JobTagsView.swift in Sources */,
 				CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
