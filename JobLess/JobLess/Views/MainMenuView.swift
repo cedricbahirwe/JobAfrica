@@ -64,7 +64,12 @@ struct MainMenuView: View {
                         }
                     }
                 }
-                ThemeToggle()
+
+                ThemeToggle { _ in
+                    withAnimation {
+                        isPresented.toggle()
+                    }
+                }
             }
             .padding()
             .foregroundColor(.white)

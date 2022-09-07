@@ -33,6 +33,7 @@ struct NavigationBarView: View {
         Image(systemName: image)
             .imageScale(.large)
             .frame(width: 30, height: 30, alignment: alignment)
+            .contentShape(Rectangle())
             .onTapGesture(perform: action)
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ThemeToggle: View {
     @AppStorage("app.colorscheme")
     private var appTheme: AppTheme = .dark
+    var onThemeChange: (_ newTheme: AppTheme) -> Void = { _ in }
 
     var body: some View {
         Picker("App Theme", selection: $appTheme) {
@@ -17,6 +18,7 @@ struct ThemeToggle: View {
                 Text(theme.rawValue.capitalized)
             }
         }
+        .onChange(of: appTheme, perform: onThemeChange)
         .pickerStyle(SegmentedPickerStyle())
         .colorScheme(.dark)
     }

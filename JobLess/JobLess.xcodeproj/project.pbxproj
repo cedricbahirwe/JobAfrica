@@ -27,6 +27,8 @@
 		CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */; };
 		CBC2E6E228C9350E00346EA4 /* JobTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E128C9350E00346EA4 /* JobTags.swift */; };
 		CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */; };
+		CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E528C9377700346EA4 /* AppTheme.swift */; };
+		CBC2E6EA28C9383F00346EA4 /* JobSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		CBC2E6E128C9350E00346EA4 /* JobTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTags.swift; sourceTree = "<group>"; };
 		CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeToggle.swift; sourceTree = "<group>"; };
+		CBC2E6E528C9377700346EA4 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 				CBC2E6D028C90EB500346EA4 /* Reusable Views */,
 				CBC2E6CA28C8B17300346EA4 /* HomeView.swift */,
 				CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */,
+				CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				CBC2E6E128C9350E00346EA4 /* JobTags.swift */,
+				CBC2E6E528C9377700346EA4 /* AppTheme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 			files = (
 				CBC2E69F28C8AB7300346EA4 /* Persistence.swift in Sources */,
 				CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */,
+				CBC2E6EA28C9383F00346EA4 /* JobSearchView.swift in Sources */,
 				CBC2E69828C8AB7000346EA4 /* ContentView.swift in Sources */,
 				CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */,
 				CBC2E6A228C8AB7300346EA4 /* JobLess.xcdatamodeld in Sources */,
@@ -353,6 +360,7 @@
 				CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
 				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
+				CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */,
 				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,
 				CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */,
 			);

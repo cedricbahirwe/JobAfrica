@@ -37,6 +37,7 @@ struct JobAdvertView: View {
                     .cornerRadius(10)
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
+                    .foregroundColor(.white)
             }
 
             VStack(alignment: .leading, spacing: 4) {
