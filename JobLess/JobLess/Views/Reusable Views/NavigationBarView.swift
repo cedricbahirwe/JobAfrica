@@ -24,7 +24,6 @@ struct NavigationBarView: View {
 
             navBarButton("slider.horizontal.3", action: onFilter)
         }
-
     }
 
     @ViewBuilder
@@ -32,8 +31,9 @@ struct NavigationBarView: View {
                               alignment: Alignment = .center,
                               action: @escaping() -> Void) -> some View {
         Image(systemName: image)
+            .imageScale(.large)
             .frame(width: 30, height: 30, alignment: alignment)
-            .onTapGesture(perform: onFilter)
+            .onTapGesture(perform: action)
     }
 }
 

@@ -22,7 +22,7 @@ struct JobDetailView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30)
-                        .foregroundColor(.main)
+                        .foregroundColor(.primary)
                 }
                 Spacer()
             }

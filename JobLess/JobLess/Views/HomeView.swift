@@ -6,66 +6,26 @@
 //
 
 import SwiftUI
-enum JobTags: String, Codable, CaseIterable {
-    case all
-    case mobile
-    case iOS
-    case android
-    case web
-    case backend
-    case frontend
 
-    var formatted: String {
-        switch self {
-        case .iOS:
-            return "iOS"
-        default:
-            return rawValue.capitalized
-        }
-    }
-}
-
-struct ThemeToggle: View {
-    init(_ sheme: Binding<ColorScheme?>) {
-        _colorScheme = sheme
-
-    }
-    @Environment(\.colorScheme)
-    private var activeScheme
-    @Binding var colorScheme: ColorScheme?
-    @State private var isDarkModeOn: Bool = false
-
-    var body: some View {
-        HStack {
-            Label("Light Theme", systemImage: isDarkModeOn ?  "sun.max" : "sun.max.fill")
-                .labelStyle(.iconOnly)
-            Toggle("Theme Toggle", isOn: $isDarkModeOn)
-                .labelsHidden()
-                .scaleEffect(0.8)
-                .tint(.main)
-            Label("Dark Theme", systemImage: isDarkModeOn ? "moon.circle.fill" :  "moon.stars")
-                .labelStyle(.iconOnly)
-                .animation(.easeInOut, value: isDarkModeOn)
-        }
-        .onChange(of: isDarkModeOn) { colorScheme = $0 ? .dark : .light }
-        .onAppear() {
-            colorScheme = activeScheme
-            isDarkModeOn = activeScheme == .dark
-        }
-    }
-}
 struct HomeView: View {
     @State private var colorScheme: ColorScheme? = nil
-    @State var selectedJobTag: JobTags = JobTags.all
-    @State var showDetailView = false
+    @State private var selectedJobTag: JobTags = JobTags.all
+    @State private var showDetailView = false
+    @State private var showMenu: Bool = false
+    private let screenSize = UIScreen.main.bounds.size
 
     var body: some View {
         ZStack {
             VStack {
-                NavigationBarView(onMenu: {},
-                              onSearch: {},
-                              onFilter: {})
 
+                NavigationBarView(
+                    onMenu: {
+                        withAnimation {
+                            showMenu.toggle()
+                        }
+                    },
+                    onSearch: {},
+                    onFilter: {})
 
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Find the best job for you\n\(Text("in Africa 🌍").bold())")
@@ -81,11 +41,20 @@ struct HomeView: View {
             }
             .padding(.horizontal)
             .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
+            .rotation3DEffect(.degrees(showMenu ? 45 : 0),
+                              axis: (0,3,0),
+                              anchor: .leading,
+                              anchorZ: 1,
+                              perspective: 1)
+            .offset(x: showMenu ? screenSize.width*0.8 : 0)
+            .disabled(showMenu)
+
+            MainMenuView(isPresented: $showMenu, screenSize: screenSize)
         }
         .sheet(isPresented: $showDetailView) {
             JobDetailView(isPresented: $showDetailView)
         }
-        .preferredColorScheme(colorScheme)
+        .preferredColorScheme(.dark)
     }
 }
 
@@ -101,9 +70,9 @@ private extension HomeView {
             HStack {
                 ForEach(0 ..< 10) { item in
                     JobAdvertView(item)
-                    .padding(6)
-                    .background(item%2 == 0 ? Color.white : Color(.systemBackground))
-                    .cornerRadius(10)
+                        .padding(6)
+                        .background(.ultraThickMaterial)
+                        .cornerRadius(10)
                 }
             }
         }
@@ -113,6 +82,9 @@ private extension HomeView {
             Section {
                 ForEach(0 ..< 5) { item in
                     JobRowView()
+                        .onTapGesture {
+                            showDetailView.toggle()
+                        }
                 }
             } header: {
                 Text("Recently Posted")
@@ -120,6 +92,22 @@ private extension HomeView {
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
+        }
+    }
+}
+
+
+public enum AppTheme: String, CaseIterable {
+    case light, dark, system
+
+    public var colorScheme: ColorScheme? {
+        switch self {
+        case .light:
+            return .light
+        case .dark:
+            return .dark
+        case .system:
+            return nil
         }
     }
 }

@@ -25,17 +25,17 @@ struct JobAdvertView: View {
                     .cornerRadius(5)
                     .padding(4)
                     .frame(width: 35, height: 35)
-                    .background(.ultraThickMaterial)
+                    .background(.ultraThinMaterial)
                     .cornerRadius(10)
 
                 Spacer()
 
                 Text("Part time")
                     .font(.caption)
-                    .lineLimit(1)
                     .padding(4)
-                    .background(.background)
-                    .cornerRadius(4)
+                    .background(Color.black.opacity(0.6))
+                    .cornerRadius(10)
+                    .lineLimit(1)
                     .minimumScaleFactor(0.5)
             }
 
@@ -60,5 +60,8 @@ struct JobAdvertView: View {
 struct JobAdvertView_Previews: PreviewProvider {
     static var previews: some View {
         JobAdvertView()
+            .padding()
+            .previewLayout(.sizeThatFits)
+            .background(Color.red)
     }
 }

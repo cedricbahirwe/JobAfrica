@@ -24,6 +24,9 @@
 		CBC2E6D428C90EDA00346EA4 /* JobTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */; };
 		CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */; };
 		CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */; };
+		CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */; };
+		CBC2E6E228C9350E00346EA4 /* JobTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E128C9350E00346EA4 /* JobTags.swift */; };
+		CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTagsView.swift; sourceTree = "<group>"; };
 		CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAdvertView.swift; sourceTree = "<group>"; };
 		CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		CBC2E6E128C9350E00346EA4 /* JobTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTags.swift; sourceTree = "<group>"; };
+		CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeToggle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,8 @@
 				CBC2E6CC28C8EE7F00346EA4 /* Info.plist */,
 				CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */,
 				CBC2E69728C8AB7000346EA4 /* ContentView.swift */,
+				CBC2E6E028C9350200346EA4 /* Models */,
+				CBC2E6DB28C915C800346EA4 /* Helpers+Extensions */,
 				CBC2E6C728C8AF2B00346EA4 /* Views */,
 				CBC2E69928C8AB7300346EA4 /* Assets.xcassets */,
 				CBC2E69E28C8AB7300346EA4 /* Persistence.swift */,
@@ -170,6 +178,7 @@
 				CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */,
 				CBC2E6D028C90EB500346EA4 /* Reusable Views */,
 				CBC2E6CA28C8B17300346EA4 /* HomeView.swift */,
+				CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,8 +190,24 @@
 				CBC2E6D328C90EDA00346EA4 /* JobTagsView.swift */,
 				CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */,
 				CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */,
+				CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */,
 			);
 			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		CBC2E6DB28C915C800346EA4 /* Helpers+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Helpers+Extensions";
+			sourceTree = "<group>";
+		};
+		CBC2E6E028C9350200346EA4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CBC2E6E128C9350E00346EA4 /* JobTags.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,10 +348,13 @@
 				CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */,
 				CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */,
 				CBC2E6D428C90EDA00346EA4 /* JobTagsView.swift in Sources */,
+				CBC2E6E228C9350E00346EA4 /* JobTags.swift in Sources */,
 				CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */,
+				CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
 				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
 				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,
+				CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
