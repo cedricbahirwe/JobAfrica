@@ -30,7 +30,7 @@ struct JobDetailView: View {
                 Spacer()
             }
             VStack(spacing: 12) {
-                if let img = job.company.logoURL {
+                if let _ = job.company.logoURL {
                     Image("img6")
                         .resizable()
                         .frame(width: 150, height: 150)

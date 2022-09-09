@@ -15,7 +15,7 @@ struct JobRowView: View {
 
     var body: some View {
         HStack {
-            if let img = job.company.logoURL {
+            if let _ = job.company.logoURL {
                 Image("img6")
                     .resizable()
                     .scaledToFill()
