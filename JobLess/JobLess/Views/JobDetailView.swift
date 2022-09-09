@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct JobDetailView: View {
-    @Binding var isPresented: Bool
+    let job: Job
+    init(_ job: Job) {
+        self.job = job
+    }
+    @Environment(\.dismiss)
+    private var dismiss
 
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    withAnimation {
-                        isPresented.toggle()
-                    }
+                    dismiss()
                 } label: {
                     Image(systemName: "x.circle")
                         .resizable()
@@ -26,72 +29,101 @@ struct JobDetailView: View {
                 }
                 Spacer()
             }
-            VStack(spacing: 20) {
+            VStack(spacing: 12) {
                 Image("img7")
                     .resizable()
                     .frame(width: 150, height: 150)
 
-                Text("Job Title")
+                Text(job.title)
                     .font(.system(.title, design: .rounded))
-
-                Text("Job Location")
-                    .font(.system(.title2, design: .monospaced))
-
-                Text("Job Posted Date")
-                    .font(.system(.callout))
                     .fontWeight(.semibold)
-            }
 
-
-            VStack(spacing: 20) {
-                Text("Job Location")
+                Text(job.location)
                     .font(.system(.title2, design: .monospaced).weight(.semibold))
 
-                Text("Local BH is hiring a Content Writer. If you want to join the Local BH family, apply now or send your resume to info@localbh.com.")
-                    .font(.system(.title3))
+                Text(job.postDate, style: .date)
+                    .font(.system(.callout).weight(.semibold))
                     .foregroundColor(.secondary)
             }
-            .frame(maxHeight: .infinity)
+            
+            VStack {
+                Text("Job Description")
+                    .font(.system(.title2, design: .monospaced).weight(.semibold))
+                    .padding(.top)
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(alignment: .leading) {
+                        ForEach(job.description.paragraphs, id: \.self) { paragraph in
+                            Group {
+                                if let title = paragraph.head {
+                                    Text(title)
+                                        .font(.system(.title))
+                                        .foregroundColor(.primary)
+                                }
 
-            VStack(alignment: .leading, spacing: 20) {
-
-                HStack {
-                    Text("Email Address:").bold()
-
-                    Text("info@localbh.com")
+                                if let body = paragraph.body {
+                                    Text(body)
+                                        .font(.system(.title3))
+                                        .foregroundColor(.secondary)
+                                        .minimumScaleFactor(0.9)
+                                }
+                            }
+                        }
+                    }
                 }
 
-                HStack {
-                    Text("WhatsApp Number:").bold()
+                VStack(alignment: .leading, spacing: 20) {
 
-                    Text("info@localbh.com")
-                }
+                    if let email = job.contact?.email {
+                        ContactLabel("Email Address", email)
+                    }
 
-//                    .font(.system(.title3))
-//                    .foregroundColor(.secondary)
+                    if let whatsapp = job.contact?.whatsapp {
+                        ContactLabel("WhatsApp Number", whatsapp)
+                    }
 
-                Button {
-                    //
-                } label: {
-                    Label("Apply Now", systemImage: "link")
-                        .labelStyle(.titleOnly)
-                        .font(.system(.body).weight(.bold))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 45)
-                        .background(Color.main)
-                        .cornerRadius(15)
+
+                    Link(destination: job.jobLink) {
+                        Label("Apply Now", systemImage: "link")
+                            .labelStyle(.titleOnly)
+                            .font(.system(.body).weight(.bold))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(Color.main)
+                            .cornerRadius(15)
+                    }
                 }
             }
-            .frame(maxHeight: .infinity)
+
         }
         .padding()
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
     }
 }
 
+#if DEBUG
 struct JobDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        JobDetailView(isPresented: .constant(true))
+        JobDetailView(.customerService)
+    }
+}
+#endif
+
+extension JobDetailView {
+    struct ContactLabel: View {
+        private let key: String
+        private let value: String
+        init(_ key: String, _ value: String) {
+            self.key = key
+            self.value = value
+        }
+
+        var body: some View {
+            HStack {
+                Text("\(key):").bold()
+                Text(value)
+                    .foregroundColor(.main)
+            }
+        }
     }
 }

@@ -8,33 +8,39 @@
 import SwiftUI
 
 struct JobRowView: View {
+    let job: Job
+    init(_ job: Job) {
+        self.job = job
+    }
+
     var body: some View {
         HStack {
             Image("img6")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 45, height: 45)
+                .frame(width: 50, height: 50)
                 .clipped()
                 .cornerRadius(8)
 
-
-            VStack(alignment: .leading, spacing: 0) {
-                Text("iOS Developer")
+            VStack(alignment: .leading, spacing: 8) {
+                Text(job.title)
                     .font(.system(.headline, design: .rounded))
                     .fontWeight(.semibold)
 
-                Spacer()
+                HStack {
+                    Text(job.company.name)
+                        .font(.system(.subheadline, design: .rounded))
+                        .foregroundColor(.secondary)
 
-                Text("ABC Bank")
-                    .font(.system(.subheadline, design: .rounded))
-                    .foregroundColor(.secondary)
+                    Spacer(minLength: 1)
+
+                    Text("\(job.type.rawValue.capitalized) - \(job.category.rawValue)")
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundColor(.secondary)
+                }
+                .lineLimit(1)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .lineLimit(1)
-
-            Text("BHD - p/m")
-                .font(.system(.caption, design: .rounded))
-                .foregroundColor(.secondary)
         }
         .padding(10)
         .background(Color.foreground)
@@ -42,9 +48,10 @@ struct JobRowView: View {
     }
 }
 
-
+#if DEBUG
 struct JobRowView_Previews: PreviewProvider {
     static var previews: some View {
-        JobRowView()
+        JobRowView(.customerService)
     }
 }
+#endif

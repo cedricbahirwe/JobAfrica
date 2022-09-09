@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBC1425928CB3D8500C44D64 /* JobProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1425828CB3D8500C44D64 /* JobProtocol.swift */; };
+		CBC1425D28CB3D8C00C44D64 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1425C28CB3D8C00C44D64 /* Job.swift */; };
+		CBC1426028CB424E00C44D64 /* JobCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1425F28CB424E00C44D64 /* JobCompany.swift */; };
+		CBC1426228CB426000C44D64 /* JobContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1426128CB426000C44D64 /* JobContact.swift */; };
+		CBC1426428CB426600C44D64 /* JobCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1426328CB426600C44D64 /* JobCategory.swift */; };
+		CBC1426628CB426D00C44D64 /* JobType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1426528CB426D00C44D64 /* JobType.swift */; };
+		CBC1426828CB427200C44D64 /* JobDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1426728CB427200C44D64 /* JobDescription.swift */; };
+		CBC1426A28CB42A400C44D64 /* Job+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1426928CB42A400C44D64 /* Job+Preview.swift */; };
+		CBC1426C28CB442700C44D64 /* JobSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1426B28CB442700C44D64 /* JobSkill.swift */; };
 		CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */; };
 		CBC2E69828C8AB7000346EA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E69728C8AB7000346EA4 /* ContentView.swift */; };
 		CBC2E69A28C8AB7300346EA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E69928C8AB7300346EA4 /* Assets.xcassets */; };
@@ -25,7 +34,7 @@
 		CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */; };
 		CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */; };
 		CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */; };
-		CBC2E6E228C9350E00346EA4 /* JobTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E128C9350E00346EA4 /* JobTags.swift */; };
+		CBC2E6E228C9350E00346EA4 /* JobTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E128C9350E00346EA4 /* JobTag.swift */; };
 		CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */; };
 		CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E528C9377700346EA4 /* AppTheme.swift */; };
 		CBC2E6EA28C9383F00346EA4 /* JobSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */; };
@@ -49,6 +58,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CBC1425828CB3D8500C44D64 /* JobProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobProtocol.swift; sourceTree = "<group>"; };
+		CBC1425C28CB3D8C00C44D64 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		CBC1425F28CB424E00C44D64 /* JobCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCompany.swift; sourceTree = "<group>"; };
+		CBC1426128CB426000C44D64 /* JobContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobContact.swift; sourceTree = "<group>"; };
+		CBC1426328CB426600C44D64 /* JobCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCategory.swift; sourceTree = "<group>"; };
+		CBC1426528CB426D00C44D64 /* JobType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobType.swift; sourceTree = "<group>"; };
+		CBC1426728CB427200C44D64 /* JobDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDescription.swift; sourceTree = "<group>"; };
+		CBC1426928CB42A400C44D64 /* Job+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+Preview.swift"; sourceTree = "<group>"; };
+		CBC1426B28CB442700C44D64 /* JobSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSkill.swift; sourceTree = "<group>"; };
 		CBC2E69228C8AB7000346EA4 /* JobAfrica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobAfrica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLessApp.swift; sourceTree = "<group>"; };
 		CBC2E69728C8AB7000346EA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,7 +90,7 @@
 		CBC2E6D528C90FFE00346EA4 /* JobAdvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobAdvertView.swift; sourceTree = "<group>"; };
 		CBC2E6D928C9137A00346EA4 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
-		CBC2E6E128C9350E00346EA4 /* JobTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTags.swift; sourceTree = "<group>"; };
+		CBC2E6E128C9350E00346EA4 /* JobTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTag.swift; sourceTree = "<group>"; };
 		CBC2E6E328C9361000346EA4 /* ThemeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeToggle.swift; sourceTree = "<group>"; };
 		CBC2E6E528C9377700346EA4 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		CBC2E6E928C9383F00346EA4 /* JobSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSearchView.swift; sourceTree = "<group>"; };
@@ -103,6 +121,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CBC1425E28CB424B00C44D64 /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				CBC1425828CB3D8500C44D64 /* JobProtocol.swift */,
+				CBC1425C28CB3D8C00C44D64 /* Job.swift */,
+				CBC1426728CB427200C44D64 /* JobDescription.swift */,
+				CBC1426128CB426000C44D64 /* JobContact.swift */,
+				CBC1425F28CB424E00C44D64 /* JobCompany.swift */,
+				CBC1426328CB426600C44D64 /* JobCategory.swift */,
+				CBC1426528CB426D00C44D64 /* JobType.swift */,
+				CBC1426B28CB442700C44D64 /* JobSkill.swift */,
+				CBC2E6E128C9350E00346EA4 /* JobTag.swift */,
+			);
+			path = Job;
+			sourceTree = "<group>";
+		};
 		CBC2E68928C8AB7000346EA4 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				CBC2E69C28C8AB7300346EA4 /* Preview Assets.xcassets */,
+				CBC1426928CB42A400C44D64 /* Job+Preview.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -210,8 +245,8 @@
 		CBC2E6E028C9350200346EA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CBC2E6E128C9350E00346EA4 /* JobTags.swift */,
 				CBC2E6E528C9377700346EA4 /* AppTheme.swift */,
+				CBC1425E28CB424B00C44D64 /* Job */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,7 +382,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC2E69F28C8AB7300346EA4 /* Persistence.swift in Sources */,
+				CBC1426228CB426000C44D64 /* JobContact.swift in Sources */,
 				CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */,
+				CBC1426A28CB42A400C44D64 /* Job+Preview.swift in Sources */,
 				CBC2E6EA28C9383F00346EA4 /* JobSearchView.swift in Sources */,
 				CBC2E69828C8AB7000346EA4 /* ContentView.swift in Sources */,
 				CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */,
@@ -355,14 +392,21 @@
 				CBC2E6D628C90FFE00346EA4 /* JobAdvertView.swift in Sources */,
 				CBC2E6DA28C9137A00346EA4 /* NavigationBarView.swift in Sources */,
 				CBC2E6D428C90EDA00346EA4 /* JobTagsView.swift in Sources */,
-				CBC2E6E228C9350E00346EA4 /* JobTags.swift in Sources */,
+				CBC2E6E228C9350E00346EA4 /* JobTag.swift in Sources */,
 				CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */,
 				CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
+				CBC1426828CB427200C44D64 /* JobDescription.swift in Sources */,
+				CBC1426028CB424E00C44D64 /* JobCompany.swift in Sources */,
+				CBC1425928CB3D8500C44D64 /* JobProtocol.swift in Sources */,
 				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
 				CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */,
 				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,
+				CBC1426428CB426600C44D64 /* JobCategory.swift in Sources */,
 				CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */,
+				CBC1426C28CB442700C44D64 /* JobSkill.swift in Sources */,
+				CBC1426628CB426D00C44D64 /* JobType.swift in Sources */,
+				CBC1425D28CB3D8C00C44D64 /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
