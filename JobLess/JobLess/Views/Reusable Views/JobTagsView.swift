@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct JobTagsView: View {
-    init(_ tags: [JobTags], selection: Binding<JobTags>) {
+    init(_ tags: [JobTag], selection: Binding<JobTag>) {
         self.tags = tags
         _selection = selection
     }
 
-    private let tags: [JobTags]
-    @Binding var selection: JobTags
+    private let tags: [JobTag]
+    @Binding var selection: JobTag
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -40,6 +40,6 @@ struct JobTagsView: View {
 
 struct JobTagsView_Previews: PreviewProvider {
     static var previews: some View {
-        JobTagsView(JobTags.allCases, selection: .constant(.all))
+        JobTagsView(JobTag.allCases, selection: .constant(.all))
     }
 }

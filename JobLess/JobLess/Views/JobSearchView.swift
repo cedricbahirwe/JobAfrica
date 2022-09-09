@@ -10,6 +10,8 @@ import SwiftUI
 struct JobSearchView: View {
     @Binding var isPresented: Bool
 
+    @FocusState var focus: Bool //= .init(false)
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
@@ -31,7 +33,13 @@ struct JobSearchView: View {
             HStack {
                 TextField("Search for a job title, e.g: developer",
                           text: .constant(""))
+                .focused($focus)
                 .font(.headline.weight(.regular))
+                .onChange(of: isPresented) { newValue in
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                        focus = newValue
+                    }
+                }
 
                 Image(systemName: "arrow.right.circle")
                     .imageScale(.large)

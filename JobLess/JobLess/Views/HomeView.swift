@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var jobs: [Job] = [.customerService]
+    @State private var selectedJob: Job?
+
     @State private var colorScheme: ColorScheme? = nil
-    @State private var selectedJobTag: JobTags = JobTags.all
-    @State private var showDetailView = false
+    @State private var selectedJobTag: JobTag = JobTag.all
     @State private var showMenu: Bool = false
     @State private var showSearch: Bool = false
     private let screenSize = UIScreen.main.bounds.size
@@ -31,13 +33,13 @@ struct HomeView: View {
                     })
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Find the best job for you\n\(Text("in Africa 🌍").bold())")
+                    Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
                         .font(.system(.title, design: .rounded))
                         .layoutPriority(2)
                     
                     jobsAdvertsView
                     
-                    JobTagsView(JobTags.allCases, selection: $selectedJobTag)
+                    JobTagsView(JobTag.allCases, selection: $selectedJobTag)
                     
                     recentPostedJobs
                 }
@@ -61,9 +63,8 @@ struct HomeView: View {
 
             MainMenuView(isPresented: $showMenu, screenSize: screenSize)
         }
-        .sheet(isPresented: $showDetailView) {
-            JobDetailView(isPresented: $showDetailView)
-        }
+        .sheet(item: $selectedJob,
+               content: JobDetailView.init)
         .preferredColorScheme(.dark)
     }
 }
@@ -80,7 +81,7 @@ private extension HomeView {
             HStack {
                 ForEach(0 ..< 10) { item in
                     JobAdvertView(item)
-                        .padding(6)
+                        .padding(8)
                         .background(.ultraThickMaterial)
                         .cornerRadius(10)
                 }
@@ -90,10 +91,10 @@ private extension HomeView {
     var recentPostedJobs: some View {
         ScrollView(.vertical, showsIndicators: false) {
             Section {
-                ForEach(0 ..< 5) { item in
-                    JobRowView()
+                ForEach(jobs) { job in
+                    JobRowView(job)
                         .onTapGesture {
-                            showDetailView.toggle()
+                            selectedJob = job
                         }
                 }
             } header: {
