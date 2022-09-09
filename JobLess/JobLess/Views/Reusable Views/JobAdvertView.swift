@@ -23,8 +23,8 @@ struct JobAdvertView: View {
                 Image(imageName)
                     .resizable()
                     .cornerRadius(5)
-                    .padding(4)
-                    .frame(width: 35, height: 35)
+                    .padding(6)
+                    .frame(width: 40, height: 40)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
 
@@ -39,20 +39,21 @@ struct JobAdvertView: View {
                     .minimumScaleFactor(0.5)
                     .foregroundColor(.white)
             }
+            .frame(maxHeight: .infinity, alignment: .top)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text("Graphic Design")
                     .fontWeight(.semibold)
 
                 Text("Solid Design")
-                    .font(.system(.caption))
+                    .font(.system(.callout))
                     .opacity(0.9)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(.white)
         }
         .padding(10)
-        .frame(width: 130, height: 130)
+        .frame(width: 150, height: 150)
         .background(Image("img1").resizable())
         .cornerRadius(10)
     }

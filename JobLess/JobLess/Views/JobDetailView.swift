@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct JobDetailView: View {
-    let job: Job
+    private let job: Job
     init(_ job: Job) {
         self.job = job
     }
-    @Environment(\.dismiss)
-    private var dismiss
+    
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack {
@@ -30,9 +30,17 @@ struct JobDetailView: View {
                 Spacer()
             }
             VStack(spacing: 12) {
-                Image("img7")
-                    .resizable()
-                    .frame(width: 150, height: 150)
+                if let img = job.company.logoURL {
+                    Image("img6")
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                        .cornerRadius(20)
+                } else {
+                    Image("company.logo.placeholder")
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                        .cornerRadius(20)
+                }
 
                 Text(job.title)
                     .font(.system(.title, design: .rounded))
@@ -45,7 +53,7 @@ struct JobDetailView: View {
                     .font(.system(.callout).weight(.semibold))
                     .foregroundColor(.secondary)
             }
-            
+
             VStack {
                 Text("Job Description")
                     .font(.system(.title2, design: .monospaced).weight(.semibold))

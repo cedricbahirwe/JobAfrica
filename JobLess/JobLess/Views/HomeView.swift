@@ -81,7 +81,7 @@ private extension HomeView {
             HStack {
                 ForEach(0 ..< 10) { item in
                     JobAdvertView(item)
-                        .padding(6)
+                        .padding(8)
                         .background(.ultraThickMaterial)
                         .cornerRadius(10)
                 }

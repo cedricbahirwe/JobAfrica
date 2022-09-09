@@ -15,12 +15,22 @@ struct JobRowView: View {
 
     var body: some View {
         HStack {
-            Image("img6")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 50, height: 50)
-                .clipped()
-                .cornerRadius(8)
+            if let img = job.company.logoURL {
+                Image("img6")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 50, height: 50)
+                    .clipped()
+                    .cornerRadius(8)
+            } else {
+                Image("company.logo.placeholder")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 50, height: 50)
+                    .clipped()
+                    .cornerRadius(8)
+            }
+
 
             VStack(alignment: .leading, spacing: 8) {
                 Text(job.title)
