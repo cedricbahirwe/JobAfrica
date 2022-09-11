@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum JobType: String, Codable {
+public enum JobType: String, Codable {
     case fullTime
     case partTime = "part-time"
     case contract

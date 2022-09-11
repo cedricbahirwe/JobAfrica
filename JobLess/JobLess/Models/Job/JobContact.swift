@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct JobContact: Codable {
-    var email: String?
-    var whatsapp: String?
-    var telegram: String?
+public struct JobContact: Codable {
+    public var email: String?
+    public var whatsapp: String?
+    public var telegram: String?
 }

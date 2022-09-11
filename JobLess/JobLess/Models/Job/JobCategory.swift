@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum JobCategory: String, Codable {
+public enum JobCategory: String, Codable {
     case hybrid
     case remote
     case onsite = "on-site"

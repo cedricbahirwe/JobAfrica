@@ -7,19 +7,22 @@
 
 import Foundation
 
-struct Job: Identifiable, Codable {
-    var id: String
-    var title: String
-    var postDate: Date
-    var jobLink: URL
-    var description: JobDescription
-    var company: JobCompany
+public struct Job: Identifiable, Codable {
+    public var id: String
+    public var title: String
+    public var postDate: Date
+    public var jobLink: URL
+    public var description: JobDescription
+    public var company: JobCompany
 
-    var type: JobType
-    var category: JobCategory
-    var location: String
-    var contact: JobContact?
+    public var type: JobType
+    public var category: JobCategory
+    public var location: String
+    public var contact: JobContact?
 
-    var tags: [JobTag]
-    var skills: [JobSkill]
+    public var tags: [JobTag]
+    public var skills: [JobSkill]
+
+    // OTHER
+    public var views: Int = 0
 }

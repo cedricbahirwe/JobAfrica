@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct JobCompany: Codable {
-    var name: String
-    var description: String?
-    var logoURL: String?
-    var location: String
+public struct JobCompany: Codable {
+    public var name: String
+    public var description: String?
+    public var logoURL: String?
+    public var location: String
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct JobDescription: Codable {
-    var paragraphs: [Paragraph]
+public struct JobDescription: Codable {
+    public var paragraphs: [Paragraph]
 
-    struct Paragraph: Hashable, Codable {
-        let head: String?
-        let body: String?
+    public struct Paragraph: Hashable, Codable {
+        public let head: String?
+        public let body: String?
     }
 }

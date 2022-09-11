@@ -87,10 +87,15 @@ struct LaunchView: View {
         ZStack {
             Color.main.ignoresSafeArea()
 
-            Text("JobLess")
-                .font(.system(.largeTitle, design: .rounded))
-                .fontWeight(.bold)
-                .foregroundColor(.foreground)
+            VStack {
+                Text("JobAfrica")
+                    .font(.system(.largeTitle, design: .rounded))
+                    .fontWeight(.bold)
+                    .foregroundColor(.foreground)
+
+
+                ProgressView()
+            }
         }
         .opacity(showLaunchView ? 1 : 0)
         .animation(.easeIn(duration: 1), value: showLaunchView)
