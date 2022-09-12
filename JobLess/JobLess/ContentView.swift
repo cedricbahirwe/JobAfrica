@@ -10,12 +10,12 @@ import CoreData
 
 struct ContentView: View {
     @State private var showLaunchView = true
-
+    
     var body: some View {
         ZStack {
             HomeView()
-
-            LaunchView($showLaunchView)
+            
+            LaunchView(showLaunchView)
         }
         .onAppear {
             showLaunchView = false
@@ -30,23 +30,25 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct LaunchView: View {
-    @Binding var showLaunchView: Bool
-
-    init(_ isOn: Binding<Bool>) {
-        _showLaunchView = isOn
+    private var showLaunchView: Bool
+    private var opacity: CGFloat
+    
+    init(_ isOn: Bool, _ opacity: CGFloat = 1.0) {
+        self.showLaunchView = isOn
+        self.opacity = opacity
     }
-
+    
     var body: some View {
         ZStack {
             Color.main.ignoresSafeArea()
-
+                .opacity(opacity)
+            
             VStack {
                 Text("JobAfrica")
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.bold)
                     .foregroundColor(.foreground)
-
-
+                
                 ProgressView()
             }
         }

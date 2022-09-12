@@ -74,30 +74,13 @@ struct HomeView: View {
                 .allowsHitTesting(showSearch)
 
             MainMenuView(isPresented: $showMenu, screenSize: screenSize)
+
+            LaunchView(jobStoreManager.isLoading, 0.9)
         }
         .sheet(item: $selectedJob,
                content: JobDetailView.init)
         .environmentObject(jobStoreManager)
     }
-
-//    private func initialization() {
-//        // Save User or update existing User
-//        try? jobStoreManager.saveUser(.getMetadata())
-//
-//        // Load General Jobs
-//        jobStoreManager.loadJobs {
-//            jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })
-//        }
-//
-//        // Load Promo Jobs
-//        jobStoreManager.loadJobs(isPromos: true) {
-//            jobStoreManager.promoJobs = $0.map({ $0.toDomainModel() })
-//        }
-//
-//        jobStoreManager.loadTags {
-//            self.jobTags = $0.map({ $0.toDomainModel() }).sorted(by: { $0.rawValue < $1.rawValue})
-//        }
-//    }
 }
 
 struct HomeView_Previews: PreviewProvider {

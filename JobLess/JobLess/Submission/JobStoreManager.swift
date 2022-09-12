@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 final class JobStoreManager: ObservableObject {
     @Published private(set) var isLoading = false
-    
+
     @Published private(set) var generalJobs: [Job] = []
     @Published private(set) var promoJobs: [Job] = []
     @Published private(set) var jobTags: [JobTag] = []
@@ -30,7 +30,8 @@ final class JobStoreManager: ObservableObject {
         loadJobs(isPromos: true) {
             self.promoJobs = $0.map({ $0.toDomainModel() }).sorted(by: { $0.postDate > $1.postDate})
         }
-        
+
+        // Load Job Tags
         loadTags {
             self.jobTags = $0.map({ $0.toDomainModel() }).sorted(by: { $0.rawValue < $1.rawValue})
         }
