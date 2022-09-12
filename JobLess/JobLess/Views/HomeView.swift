@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var jobStoreManager = JobStoreManager()
-    @State private var jobTags = [JobTag]()
 
     @State private var selectedJob: Job?
     @State private var selectedJobTag: JobTag = .all
@@ -52,7 +51,7 @@ struct HomeView: View {
                     
                     jobsAdvertsView
                     
-                    JobTagsView(jobTags, selection: $selectedJobTag)
+                    JobTagsView(jobStoreManager.jobTags, selection: $selectedJobTag)
                     
                     recentPostedJobs
                 }
@@ -78,28 +77,27 @@ struct HomeView: View {
         }
         .sheet(item: $selectedJob,
                content: JobDetailView.init)
-        .onAppear(perform: initialization)
         .environmentObject(jobStoreManager)
     }
 
-    private func initialization() {
-        // Save User or update existing User
-        try? jobStoreManager.saveUser(.getMetadata())
-        jobStoreManager.saveJob(.example, isPromo: true)
-        // Load General Jobs
-        jobStoreManager.loadJobs {
-            jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })
-        }
-
-        // Load Promo Jobs
-        jobStoreManager.loadJobs(isPromos: true) {
-            jobStoreManager.promoJobs = $0.map({ $0.toDomainModel() })
-        }
-
-        jobStoreManager.loadTags {
-            self.jobTags = $0.map({ $0.toDomainModel() }).sorted(by: { $0.rawValue < $1.rawValue})
-        }
-    }
+//    private func initialization() {
+//        // Save User or update existing User
+//        try? jobStoreManager.saveUser(.getMetadata())
+//
+//        // Load General Jobs
+//        jobStoreManager.loadJobs {
+//            jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })
+//        }
+//
+//        // Load Promo Jobs
+//        jobStoreManager.loadJobs(isPromos: true) {
+//            jobStoreManager.promoJobs = $0.map({ $0.toDomainModel() })
+//        }
+//
+//        jobStoreManager.loadTags {
+//            self.jobTags = $0.map({ $0.toDomainModel() }).sorted(by: { $0.rawValue < $1.rawValue})
+//        }
+//    }
 }
 
 struct HomeView_Previews: PreviewProvider {
