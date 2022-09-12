@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import FirebaseFirestoreSwift
 
 protocol BaseModel {
@@ -92,5 +93,41 @@ struct JobCategoryModel: Codable, BaseModel {
 
     func toDomainModel() -> JobCategory {
         JobCategory(rawValue: value) ?? .other
+    }
+}
+
+public struct UserModel: Codable, BaseModel {
+    @DocumentID public var id: String?
+    public let name: String
+    public let model: String
+    public let identifier: String
+    public let osName: String
+    public let osVersion: String
+    public let lastSeenDate: Date
+
+    public static func getMetadata() -> UserModel {
+        let device = UIDevice.current
+        let osVersion = device.systemVersion
+        let osName = device.systemName.lowercased()
+        let deviceModel = device.model
+        let name = device.name
+        let identifier = device.identifierForVendor?.uuidString  ?? UUID().uuidString
+
+        return UserModel(id: identifier,
+                         name: name,
+                         model: deviceModel,
+                         identifier: identifier,
+                         osName: osName,
+                         osVersion: osVersion,
+                         lastSeenDate: Date())
+    }
+
+    func toDomainModel() -> User {
+        User(name: name,
+             model: model,
+             identifier: identifier,
+             osName: osName,
+             osVersion: osVersion,
+             lastSeenDate: lastSeenDate)
     }
 }

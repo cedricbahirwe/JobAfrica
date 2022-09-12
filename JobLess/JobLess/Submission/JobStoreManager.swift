@@ -12,6 +12,7 @@ final class JobStoreManager: ObservableObject {
     @Published private(set) var isLoading = false
 
     @Published var generalJobs: [Job] = []
+    @Published var promoJobs: [Job] = []
     public init() { }
 
     private let db = Firestore.firestore()
@@ -95,10 +96,10 @@ final class JobStoreManager: ObservableObject {
             .updateData(["views": views])
     }
 
-    func saveUser(_ id: String, user: JobModel) throws {
+    func saveUser(_ user: UserModel) throws {
         try db
             .collection(.users)
-            .document(id)
+            .document(user.id ?? user.identifier)
             .setData(from: user) { error in
                 if let error = error {
                     print(error.localizedDescription)

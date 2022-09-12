@@ -9,11 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var jobStoreManager = JobStoreManager()
+    @State private var jobTags = [JobTag]()
+
     @State private var selectedJob: Job?
-    @State private var selectedJobTag: JobTag = JobTag.all
+    @State private var selectedJobTag: JobTag = .all
     @State private var showMenu: Bool = false
     @State private var showSearch: Bool = false
+    @State private var searchEntry: String = ""
+
     private let screenSize = UIScreen.main.bounds.size
+
+    private var filteredJobs: [Job] {
+        selectedJobTag == .all ?
+        jobStoreManager.generalJobs :
+        jobStoreManager.generalJobs.filter({ $0.title.lowercased() == searchEntry.lowercased() })
+    }
 
     var body: some View {
         ZStack {
@@ -30,13 +40,19 @@ struct HomeView: View {
                     onFilter: {})
 
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
-                        .font(.system(.title, design: .rounded))
-                        .layoutPriority(2)
+                    Group {
+                        if selectedJobTag == .all {
+                            Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
+                        } else {
+                            Text(selectedJobTag.formatted)
+                        }
+                    }
+                    .font(.system(.title, design: .rounded))
+                    .layoutPriority(2)
                     
                     jobsAdvertsView
                     
-                    JobTagsView(JobTag.allCases, selection: $selectedJobTag)
+                    JobTagsView(jobTags, selection: $selectedJobTag)
                     
                     recentPostedJobs
                 }
@@ -51,7 +67,7 @@ struct HomeView: View {
             .disabled(showMenu)
             .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
 
-            JobSearchView(isPresented: $showSearch)
+            JobSearchView(searchEntry: $searchEntry, isPresented: $showSearch)
                 .scaleEffect(showSearch ? 1 : 0.1 , anchor: .topTrailing)
                 .cornerRadius(showSearch ?  0 : CGFloat.infinity)
                 .animation(.easeInOut(duration: 0.3), value: showSearch)
@@ -62,11 +78,20 @@ struct HomeView: View {
         }
         .sheet(item: $selectedJob,
                content: JobDetailView.init)
-        .onAppear() {
-            jobStoreManager.loadJobs {
-                jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })
-            }
-        } 
+        .onAppear(perform: initialization)
+        .environmentObject(jobStoreManager)
+    }
+
+    private func initialization() {
+        // Save User or update existing User
+        try? jobStoreManager.saveUser(.getMetadata())
+        jobStoreManager.loadJobs {
+            jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })
+        }
+
+        jobStoreManager.loadTags {
+            self.jobTags = $0.map({ $0.toDomainModel() }).sorted(by: { $0.rawValue < $1.rawValue})
+        }
     }
 }
 
@@ -80,7 +105,7 @@ private extension HomeView {
     var jobsAdvertsView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(jobStoreManager.generalJobs) { job in
+                ForEach(jobStoreManager.promoJobs) { job in
                     JobAdvertView(job)
                         .padding(8)
                         .background(.ultraThickMaterial)
@@ -95,7 +120,7 @@ private extension HomeView {
     var recentPostedJobs: some View {
         ScrollView(.vertical, showsIndicators: false) {
             Section {
-                ForEach(jobStoreManager.generalJobs) { job in
+                ForEach(filteredJobs) { job in
                     JobRowView(job)
                         .onTapGesture {
                             selectedJob = job

@@ -11,6 +11,8 @@
 		CB408A7828CF57610029B91C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7728CF57610029B91C /* Utilities.swift */; };
 		CB408A7C28CF5B1D0029B91C /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7B28CF5B1D0029B91C /* UserDefaults+.swift */; };
 		CB408A7E28CF5B810029B91C /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7D28CF5B810029B91C /* WhatsNewView.swift */; };
+		CB408A8028CF61730029B91C /* TestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7F28CF61730029B91C /* TestingView.swift */; };
+		CB408A8228CF62050029B91C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A8128CF62050029B91C /* User.swift */; };
 		CB6E482728CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482828CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482928CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
@@ -84,6 +86,8 @@
 		CB408A7728CF57610029B91C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CB408A7B28CF5B1D0029B91C /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		CB408A7D28CF5B810029B91C /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
+		CB408A7F28CF61730029B91C /* TestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingView.swift; sourceTree = "<group>"; };
+		CB408A8128CF62050029B91C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB6E483D28CE90FF006DF6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6E484028CE9489006DF6CA /* JobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 				CBC2E6CD28C8F15B00346EA4 /* JobLess.entitlements */,
 				CBC2E6CC28C8EE7F00346EA4 /* Info.plist */,
 				CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */,
+				CB408A7F28CF61730029B91C /* TestingView.swift */,
 				CB6E483D28CE90FF006DF6CA /* AppDelegate.swift */,
 				CBC2E69728C8AB7000346EA4 /* ContentView.swift */,
 				CB6E484A28CE995F006DF6CA /* SubmitterView.swift */,
@@ -306,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				CBC2E6E528C9377700346EA4 /* AppTheme.swift */,
+				CB408A8128CF62050029B91C /* User.swift */,
 				CBC1425E28CB424B00C44D64 /* Job */,
 				CB6E484628CE95DE006DF6CA /* ApiErrors.swift */,
 			);
@@ -477,6 +483,7 @@
 				CBC2E6C628C8AD0600346EA4 /* Colors+.swift in Sources */,
 				CB6E484528CE95A4006DF6CA /* Helpers.swift in Sources */,
 				CB6E484128CE9489006DF6CA /* JobModel.swift in Sources */,
+				CB408A8228CF62050029B91C /* User.swift in Sources */,
 				CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
 				CBC1426828CB427200C44D64 /* JobDescription.swift in Sources */,
@@ -484,6 +491,7 @@
 				CBC1425928CB3D8500C44D64 /* JobProtocol.swift in Sources */,
 				CB408A7828CF57610029B91C /* Utilities.swift in Sources */,
 				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
+				CB408A8028CF61730029B91C /* TestingView.swift in Sources */,
 				CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */,
 				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,
 				CB6E484328CE9559006DF6CA /* Collections.swift in Sources */,

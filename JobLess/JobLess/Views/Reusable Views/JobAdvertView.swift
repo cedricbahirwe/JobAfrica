@@ -56,6 +56,8 @@ struct JobAdvertView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(job.title)
                     .fontWeight(.semibold)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
 
                 Text(job.company.name)
                     .font(.system(.callout))

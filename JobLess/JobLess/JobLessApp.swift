@@ -20,6 +20,7 @@ struct JobLessApp: App {
     var body: some Scene {
         WindowGroup {
             //            SubmitterView()
+//            TestingView()
             ContentView()
                 .sheet(isPresented: $showWelcomeView) {
                     WhatsNewView(isPresented: $showWelcomeView)
