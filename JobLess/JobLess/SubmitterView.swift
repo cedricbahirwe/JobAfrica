@@ -25,7 +25,7 @@ struct SubmitterView: View {
     @State private var jobWhatsapp = ""
     @State private var jobTelegram = ""
 
-    @StateObject private var submitter = Submitter()
+    @StateObject private var jobStoreManager = JobStoreManager()
     var body: some View {
         ZStack {
         VStack {
@@ -156,7 +156,7 @@ struct SubmitterView: View {
             .padding(.horizontal)
         }
 
-            if submitter.isLoading {
+            if jobStoreManager.isLoading {
                 Color.black.opacity(0.6).ignoresSafeArea()
                 VStack {
                     ProgressView()
@@ -170,20 +170,20 @@ struct SubmitterView: View {
     }
 
     private func initialize() {
-        submitter.loadCompanies { self.companies = $0 }
+        jobStoreManager.loadCompanies { self.companies = $0 }
 
-        submitter.loadJobs {
+        jobStoreManager.loadJobs {
             print("Jobs", $0)
         }
-//        submitter.loadTags {
+//        jobStoreManager.loadTags {
 //            print("Tags", $0)
 //        }
 //
-//        submitter.loadCategories {
+//        jobStoreManager.loadCategories {
 //            print("Categories", $0)
 //        }
 //
-//        submitter.loadTypes {
+//        jobStoreManager.loadTypes {
 //            print("Types", $0)
 //        }
     }
@@ -208,7 +208,7 @@ struct SubmitterView: View {
                               tags: selectedTags,
                               skills: selectedSkills)
 
-        submitter.saveJob(newJob)
+        jobStoreManager.saveJob(newJob)
 
     }
 }

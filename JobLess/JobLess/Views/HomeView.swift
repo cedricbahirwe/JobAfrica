@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var jobs: [Job] = [.customerService]
-    @StateObject private var submitter = Submitter()
+    @StateObject private var jobStoreManager = JobStoreManager()
     @State private var selectedJob: Job?
 
     @State private var colorScheme: ColorScheme? = nil
@@ -68,7 +68,7 @@ struct HomeView: View {
                content: JobDetailView.init)
         .preferredColorScheme(.dark)
         .onAppear() {
-            submitter.loadJobs { submitter.generalJobs = $0.map({ $0.toDomainModel() }) }
+            jobStoreManager.loadJobs { jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() }) }
         } 
     }
 }
@@ -83,7 +83,7 @@ private extension HomeView {
     var jobsAdvertsView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(submitter.generalJobs) { job in
+                ForEach(jobStoreManager.generalJobs) { job in
                     JobAdvertView(job)
                         .padding(8)
                         .background(.ultraThickMaterial)
@@ -98,7 +98,7 @@ private extension HomeView {
     var recentPostedJobs: some View {
         ScrollView(.vertical, showsIndicators: false) {
             Section {
-                ForEach(submitter.generalJobs) { job in
+                ForEach(jobStoreManager.generalJobs) { job in
                     JobRowView(job)
                         .onTapGesture {
                             selectedJob = job

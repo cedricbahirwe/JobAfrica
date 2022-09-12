@@ -1,5 +1,5 @@
 //
-//  Submitter.swift
+//  JobStoreManager.swift
 //  JobLess
 //
 //  Created by Cédric Bahirwe on 12/09/2022.
@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-final class Submitter: ObservableObject {
+final class JobStoreManager: ObservableObject {
     @Published private(set) var isLoading = false
 
     @Published var generalJobs: [Job] = []
@@ -86,11 +86,11 @@ final class Submitter: ObservableObject {
             }
     }
 
-    func saveJobView(job: JobModel) {
+    func viewJob(job: Job) {
         let views = job.views + 1
         db
             .collection(.users)
-            .document(job.id!)
+            .document(job.id)
             .setData(["views": views as Any]) { error in
                 if let error = error {
                     print(error.localizedDescription)
