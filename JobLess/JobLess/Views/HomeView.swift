@@ -85,8 +85,15 @@ struct HomeView: View {
     private func initialization() {
         // Save User or update existing User
         try? jobStoreManager.saveUser(.getMetadata())
+        jobStoreManager.saveJob(.example, isPromo: true)
+        // Load General Jobs
         jobStoreManager.loadJobs {
             jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })
+        }
+
+        // Load Promo Jobs
+        jobStoreManager.loadJobs(isPromos: true) {
+            jobStoreManager.promoJobs = $0.map({ $0.toDomainModel() })
         }
 
         jobStoreManager.loadTags {

@@ -36,7 +36,11 @@ struct MainMenuView: View {
                 ScrollView {
                     VStack(spacing: 10) {
                         HStack {
-                            MenuItemView("Jobs", "Home", action: { })
+                            MenuItemView("Jobs", "Home", action: {
+                                withAnimation {
+                                    isPresented.toggle()
+                                }
+                            })
 
                             MenuItemView("About", "JobAfrica", action: {
                                 showAboutUs.toggle()
@@ -44,7 +48,10 @@ struct MainMenuView: View {
                         }
 
                         HStack {
-                            MenuItemView("Contact", "abc.incs.001@gmail.com", true, action: { })
+                            Link(destination: URL(string: "mailto:abc.incs.001@gmail.com")!) {
+                                MenuItemView("Contact", "abc.incs.001@gmail.com", true, action: { })
+                                    .disabled(true)
+                            }
                         }
                     }
                 }
