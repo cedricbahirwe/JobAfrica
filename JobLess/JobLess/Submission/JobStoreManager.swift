@@ -86,15 +86,18 @@ final class JobStoreManager: ObservableObject {
             }
     }
 
-    func viewJob(job: Job) {
+    func viewJob(_ job: Job, isPromo: Bool = false) {
+        let collection: FirebaseCollection = isPromo ? .promo : .general
         let views = job.views + 1
         db
-            .collection(.users)
+            .collection(collection)
             .document(job.id)
-            .setData(["views": views as Any]) { error in
+            .setData(["views": views]) { error in
                 if let error = error {
                     print(error.localizedDescription)
                     return
+                } else {
+                    print("Success")
                 }
             }
     }

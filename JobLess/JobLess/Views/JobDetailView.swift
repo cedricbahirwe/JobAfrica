@@ -115,7 +115,7 @@ struct JobDetailView: View {
         .padding()
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
         .onAppear() {
-            JobStoreManager().viewJob(job: job)
+            JobStoreManager().viewJob(job)
         }
     }
 }

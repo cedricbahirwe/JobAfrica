@@ -50,7 +50,7 @@ struct JobRowView: View {
 
                     Spacer(minLength: 1)
 
-                    Text("\(job.type.rawValue.capitalized) - \(job.category.rawValue)")
+                    Text("\(job.type.rawValue.capitalized) - \(job.category.rawValue.capitalized)")
                         .font(.system(.caption, design: .rounded))
                         .foregroundColor(.secondary)
                 }
