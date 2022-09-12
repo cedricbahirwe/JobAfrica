@@ -31,7 +31,7 @@ struct JobDetailView: View {
             }
             VStack(spacing: 12) {
                 if let logoURL = job.company.logoURL {
-                    AsycImage(url: logoURL) { image in
+                    AsyncImage(url: logoURL) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)

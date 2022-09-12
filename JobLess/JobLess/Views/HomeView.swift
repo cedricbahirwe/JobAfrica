@@ -83,8 +83,8 @@ private extension HomeView {
     var jobsAdvertsView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(0 ..< 10) { item in
-                    JobAdvertView(item)
+                ForEach(submitter.generalJobs) { job in
+                    JobAdvertView(job)
                         .padding(8)
                         .background(.ultraThickMaterial)
                         .cornerRadius(10)

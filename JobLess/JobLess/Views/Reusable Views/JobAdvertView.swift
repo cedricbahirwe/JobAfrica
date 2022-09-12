@@ -8,29 +8,41 @@
 import SwiftUI
 
 struct JobAdvertView: View {
-    let item: Int
-    init(_ item: Int = 1) {
-        self.item = item
-    }
-    private var imageName: String {
-        let img = item < 6 ? item+1 : 1
-        return "img\(img)"
+    let job: Job
+    init(_ job: Job) {
+        self.job = job
     }
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 0) {
-                Image(imageName)
-                    .resizable()
-                    .cornerRadius(5)
-                    .padding(6)
+                if let logoURL = job.company.logoURL {
+                    AsyncImage(url: logoURL) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        Image("company.logo.placeholder")
+                            .resizable()
+                            .scaledToFill()
+                    }
                     .frame(width: 40, height: 40)
+                    .clipped()
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
+                } else {
+                    Image("company.logo.placeholder")
+                        .resizable()
+                        .cornerRadius(5)
+                        .padding(6)
+                        .frame(width: 40, height: 40)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(10)
 
+                }
                 Spacer()
 
-                Text("Part time")
+                Text(job.type.rawValue.capitalized)
                     .font(.caption)
                     .padding(4)
                     .background(Color.black.opacity(0.6))
@@ -42,10 +54,10 @@ struct JobAdvertView: View {
             .frame(maxHeight: .infinity, alignment: .top)
 
             VStack(alignment: .leading, spacing: 4) {
-                Text("Graphic Design")
+                Text(job.title)
                     .fontWeight(.semibold)
 
-                Text("Solid Design")
+                Text(job.company.name)
                     .font(.system(.callout))
                     .opacity(0.9)
             }
@@ -54,16 +66,36 @@ struct JobAdvertView: View {
         }
         .padding(10)
         .frame(width: 150, height: 150)
-        .background(Image("img1").resizable())
+        .background(
+            ZStack {
+                if let logoURL = job.company.logoURL {
+                    AsyncImage(url: logoURL) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        Image("company.logo.placeholder")
+                            .resizable()
+                            .scaledToFill()
+                    }
+                } else {
+                    Image("img1")
+                        .resizable()
+                        .opacity(0.8)
+                }
+            }
+        )
         .cornerRadius(10)
     }
 }
 
+#if DEBUG
 struct JobAdvertView_Previews: PreviewProvider {
     static var previews: some View {
-        JobAdvertView()
+        JobAdvertView(.customerService)
             .padding()
             .previewLayout(.sizeThatFits)
             .background(Color.red)
     }
 }
+#endif
