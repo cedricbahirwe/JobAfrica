@@ -14,7 +14,7 @@ protocol BaseModel {
     func toDomainModel() -> Model
 }
 
-public struct JobModel: Identifiable, Codable {
+public struct JobModel: Identifiable, Codable, BaseModel { 
     @DocumentID public var id: String?
     public var title: String
     public var postDate: Date
@@ -32,6 +32,22 @@ public struct JobModel: Identifiable, Codable {
 
     // OTHER
     public var views: Int = 0
+
+    func toDomainModel() -> Job {
+        Job(id: id!,
+            title: title,
+            postDate: postDate,
+            jobLink: jobLink,
+            description: description,
+            company: company,
+            type: type,
+            category: category,
+            location: location,
+            contact: contact,
+            tags: tags,
+            skills: skills,
+            views: views)
+    }
 }
 
 

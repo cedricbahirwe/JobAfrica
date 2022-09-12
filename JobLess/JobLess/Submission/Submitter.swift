@@ -11,7 +11,7 @@ import FirebaseFirestore
 final class Submitter: ObservableObject {
     @Published private(set) var isLoading = false
 
-    @Published private var generalJobs: [Job] = []
+    @Published var generalJobs: [Job] = []
     public init() { }
 
     private let db = Firestore.firestore()

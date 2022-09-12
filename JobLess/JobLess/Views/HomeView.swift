@@ -68,8 +68,8 @@ struct HomeView: View {
                content: JobDetailView.init)
         .preferredColorScheme(.dark)
         .onAppear() {
-            submitter.loadJobs { submitter.generalJobs = $0 }
-        }
+            submitter.loadJobs { submitter.generalJobs = $0.map({ $0.toDomainModel() }) }
+        } 
     }
 }
 

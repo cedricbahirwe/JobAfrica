@@ -30,11 +30,19 @@ struct JobDetailView: View {
                 Spacer()
             }
             VStack(spacing: 12) {
-                if let _ = job.company.logoURL {
-                    Image("img6")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(20)
+                if let logoURL = job.company.logoURL {
+                    AsycImage(url: logoURL) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        Image("company.logo.placeholder")
+                            .resizable()
+                            .scaledToFill()
+                    }
+                    .frame(width: 150, height: 150)
+                    .clipped()
+                    .cornerRadius(20)
                 } else {
                     Image("company.logo.placeholder")
                         .resizable()

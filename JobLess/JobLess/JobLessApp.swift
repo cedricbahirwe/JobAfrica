@@ -17,8 +17,8 @@ struct JobLessApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SubmitterView()
-//            ContentView()
+//            SubmitterView()
+            ContentView()
                 .preferredColorScheme(appTheme.colorScheme)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
