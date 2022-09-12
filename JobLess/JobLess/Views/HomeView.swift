@@ -68,7 +68,9 @@ struct HomeView: View {
                content: JobDetailView.init)
         .preferredColorScheme(.dark)
         .onAppear() {
-            jobStoreManager.loadJobs { jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() }) }
+            jobStoreManager.loadJobs {
+                jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })
+            }
         } 
     }
 }

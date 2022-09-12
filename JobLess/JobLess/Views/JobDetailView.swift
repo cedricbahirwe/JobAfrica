@@ -114,8 +114,12 @@ struct JobDetailView: View {
         }
         .padding()
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
-        .onAppear() {
-            JobStoreManager().viewJob(job)
+        .task {
+            do {
+                try await JobStoreManager().viewJob(job)
+            } catch {
+                print(error)
+            }
         }
     }
 }
