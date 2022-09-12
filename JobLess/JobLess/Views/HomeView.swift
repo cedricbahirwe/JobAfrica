@@ -88,6 +88,9 @@ private extension HomeView {
                         .padding(8)
                         .background(.ultraThickMaterial)
                         .cornerRadius(10)
+                        .onTapGesture {
+                            selectedJob = job
+                        }
                 }
             }
         }
