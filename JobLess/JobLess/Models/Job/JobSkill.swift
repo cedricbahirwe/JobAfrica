@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct JobSkill: Codable {
+public struct JobSkill: Hashable, Codable {
     let name: String
 
     public init(_ name: String) {

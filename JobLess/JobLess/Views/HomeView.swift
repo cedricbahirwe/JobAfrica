@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var jobs: [Job] = [.customerService]
+    @StateObject private var submitter = Submitter()
     @State private var selectedJob: Job?
 
     @State private var colorScheme: ColorScheme? = nil
@@ -66,6 +67,9 @@ struct HomeView: View {
         .sheet(item: $selectedJob,
                content: JobDetailView.init)
         .preferredColorScheme(.dark)
+        .onAppear() {
+            submitter.loadJobs { submitter.generalJobs = $0 }
+        }
     }
 }
 
@@ -91,7 +95,7 @@ private extension HomeView {
     var recentPostedJobs: some View {
         ScrollView(.vertical, showsIndicators: false) {
             Section {
-                ForEach(jobs) { job in
+                ForEach(submitter.generalJobs) { job in
                     JobRowView(job)
                         .onTapGesture {
                             selectedJob = job
