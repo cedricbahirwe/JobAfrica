@@ -12,7 +12,7 @@ struct JobDetailView: View {
     init(_ job: Job) {
         self.job = job
     }
-    
+    @EnvironmentObject private var jobStoreManager: JobStoreManager
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -30,11 +30,19 @@ struct JobDetailView: View {
                 Spacer()
             }
             VStack(spacing: 12) {
-                if let _ = job.company.logoURL {
-                    Image("img6")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(20)
+                if let logoURL = job.company.logoURL {
+                    AsyncImage(url: logoURL) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        Image("company.logo.placeholder")
+                            .resizable()
+                            .scaledToFill()
+                    }
+                    .frame(width: 150, height: 150)
+                    .clipped()
+                    .cornerRadius(20)
                 } else {
                     Image("company.logo.placeholder")
                         .resizable()
@@ -55,10 +63,11 @@ struct JobDetailView: View {
             }
 
             VStack {
-                Text("Job Description")
-                    .font(.system(.title2, design: .monospaced).weight(.semibold))
-                    .padding(.top)
                 ScrollView(.vertical, showsIndicators: false) {
+                    Text("Job Description")
+                        .font(.system(.title2, design: .monospaced).weight(.semibold))
+                        .padding(.vertical, 10)
+
                     VStack(alignment: .leading) {
                         ForEach(job.description.paragraphs, id: \.self) { paragraph in
                             Group {
@@ -76,36 +85,47 @@ struct JobDetailView: View {
                                 }
                             }
                         }
+
+                        VStack(alignment: .leading, spacing: 20) {
+
+                            if let email = job.contact?.email {
+                                ContactLabel("Email Address", email)
+                            }
+
+                            if let whatsapp = job.contact?.whatsapp {
+                                ContactLabel("WhatsApp Number", whatsapp)
+                            }
+
+                            if let telegram = job.contact?.telegram {
+                                ContactLabel("Telegram:", "@\(telegram)")
+                            }
+                        }
+                        .padding(.vertical, 10)
                     }
                 }
 
-                VStack(alignment: .leading, spacing: 20) {
-
-                    if let email = job.contact?.email {
-                        ContactLabel("Email Address", email)
-                    }
-
-                    if let whatsapp = job.contact?.whatsapp {
-                        ContactLabel("WhatsApp Number", whatsapp)
-                    }
-
-
-                    Link(destination: job.jobLink) {
-                        Label("Apply Now", systemImage: "link")
-                            .labelStyle(.titleOnly)
-                            .font(.system(.body).weight(.bold))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background(Color.main)
-                            .cornerRadius(15)
-                    }
+                Link(destination: job.jobLink) {
+                    Label("Apply Now", systemImage: "link")
+                        .labelStyle(.titleOnly)
+                        .font(.system(.body).weight(.bold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color.main)
+                        .cornerRadius(15)
                 }
             }
 
         }
         .padding()
         .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
+        .task {
+            do {
+                try await jobStoreManager.viewJob(job)
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 
@@ -113,6 +133,7 @@ struct JobDetailView: View {
 struct JobDetailView_Previews: PreviewProvider {
     static var previews: some View {
         JobDetailView(.customerService)
+            .environmentObject(JobStoreManager())
     }
 }
 #endif

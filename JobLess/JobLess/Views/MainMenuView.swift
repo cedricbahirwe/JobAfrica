@@ -10,6 +10,8 @@ import SwiftUI
 struct MainMenuView: View {
     @Binding var isPresented: Bool
     var screenSize = UIScreen.main.bounds.size
+    @State private var showAboutUs: Bool = false
+
     var body: some View {
         VStack {
             VStack {
@@ -33,33 +35,22 @@ struct MainMenuView: View {
 
                 ScrollView {
                     VStack(spacing: 10) {
-                        ForEach(0 ..< 5) { item in
-                            HStack {
-                                VStack(alignment: .leading, spacing: 20) {
-                                    Text("Jobs")
-                                        .font(.callout)
-
-                                    Text("Home")
-                                        .font(.title2.weight(.regular))
+                        HStack {
+                            MenuItemView("Jobs", "Home", action: {
+                                withAnimation {
+                                    isPresented.toggle()
                                 }
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .frame(height: 80)
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(16)
+                            })
 
-                                VStack(alignment: .leading, spacing: 20) {
-                                    Text("Jobs")
-                                        .font(.callout)
+                            MenuItemView("About", "JobAfrica", action: {
+                                showAboutUs.toggle()
+                            })
+                        }
 
-                                    Text("Home")
-                                        .font(.title2.weight(.regular))
-                                }
-                                .padding(20)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .frame(height: 80)
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(16)
+                        HStack {
+                            Link(destination: URL(string: "mailto:abc.incs.001@gmail.com")!) {
+                                MenuItemView("Contact", "abc.incs.001@gmail.com", true, action: { })
+                                    .disabled(true)
                             }
                         }
                     }
@@ -78,11 +69,47 @@ struct MainMenuView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
         .background(Color.black)
         .offset(x: isPresented ? -screenSize.width*0.1 : -screenSize.width)
+        .sheet(isPresented: $showAboutUs, content: AboutUsView.init)
     }
 }
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView(isPresented: .constant(true))
+    }
+}
+
+extension MainMenuView {
+    struct MenuItemView: View {
+        init(_ title: String,
+             _ subtitle: String,
+             _ isSelected: Bool = false,
+             action: @escaping () -> Void) {
+            self.title = title
+            self.subtitle = subtitle
+            self.isSelected = isSelected
+            self.action = action
+        }
+
+        let title: String
+        let subtitle: String
+        var isSelected: Bool
+        var action: () -> Void
+
+        var body: some View {
+            VStack(alignment: .leading, spacing: 20) {
+                Text(title)
+                    .font(.callout)
+
+                Text(subtitle)
+                    .font(.title2.weight(.regular))
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: 80)
+            .background(isSelected ? Color.main : Color.gray.opacity(0.2))
+            .cornerRadius(16)
+            .onTapGesture(perform: action)
+        }
     }
 }

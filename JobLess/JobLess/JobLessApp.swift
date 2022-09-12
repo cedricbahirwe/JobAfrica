@@ -9,15 +9,22 @@ import SwiftUI
 
 @main
 struct JobLessApp: App {
-    let persistenceController = PersistenceController.shared
-    @AppStorage("app.colorscheme")
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+    @AppStorage(UserDefaultsKeys.appColorScheme)
     private var appTheme: AppTheme = .dark
+
+    @AppStorage(UserDefaultsKeys.showWelcomeView)
+    private var showWelcomeView: Bool = true
 
     var body: some Scene {
         WindowGroup {
+            //            SubmitterView()
             ContentView()
+                .sheet(isPresented: $showWelcomeView) {
+                    WhatsNewView(isPresented: $showWelcomeView)
+                }
                 .preferredColorScheme(appTheme.colorScheme)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

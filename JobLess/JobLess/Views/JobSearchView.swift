@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct JobSearchView: View {
+    @Binding var searchEntry: String
     @Binding var isPresented: Bool
 
-    @FocusState var focus: Bool //= .init(false)
+    @FocusState var focus: Bool
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
                 Button {
                     isPresented.toggle()
+                    searchEntry = ""
                 } label: {
                     Image(systemName: "arrow.left")
                         .imageScale(.large)
@@ -74,6 +76,7 @@ struct JobSearchView: View {
 
 struct JobSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        JobSearchView(isPresented: .constant(true))
+        JobSearchView(searchEntry: .constant(""),
+                      isPresented: .constant(true))
     }
 }

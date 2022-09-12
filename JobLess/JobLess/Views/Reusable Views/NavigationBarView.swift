@@ -21,8 +21,10 @@ struct NavigationBarView: View {
             Spacer()
 
             navBarButton("magnifyingglass", action: onSearch)
+                .hidden()
 
             navBarButton("slider.horizontal.3", action: onFilter)
+                .hidden()
         }
     }
 
