@@ -10,8 +10,8 @@ import SwiftUI
 struct MainMenuView: View {
     @Binding var isPresented: Bool
     var screenSize = UIScreen.main.bounds.size
-    @AppStorage("about.page.show")
-    private var showAboutUs: Bool = true
+    @State private var showAboutUs: Bool = false
+
     var body: some View {
         VStack {
             VStack {
@@ -38,7 +38,9 @@ struct MainMenuView: View {
                         HStack {
                             MenuItemView("Jobs", "Home", action: { })
 
-                            MenuItemView("About", "JobAfrica", action: { })
+                            MenuItemView("About", "JobAfrica", action: {
+                                showAboutUs.toggle()
+                            })
                         }
 
                         HStack {
@@ -60,6 +62,7 @@ struct MainMenuView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
         .background(Color.black)
         .offset(x: isPresented ? -screenSize.width*0.1 : -screenSize.width)
+        .sheet(isPresented: $showAboutUs, content: AboutUsView.init)
     }
 }
 

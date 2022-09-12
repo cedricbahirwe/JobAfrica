@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ThemeToggle: View {
-    @AppStorage("app.colorscheme")
+    @AppStorage(UserDefaultsKeys.appColorScheme)
     private var appTheme: AppTheme = .dark
     var onThemeChange: (_ newTheme: AppTheme) -> Void = { _ in }
 

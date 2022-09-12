@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CB408A7628CF55B70029B91C /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7528CF55B70029B91C /* AboutUsView.swift */; };
 		CB408A7828CF57610029B91C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7728CF57610029B91C /* Utilities.swift */; };
+		CB408A7C28CF5B1D0029B91C /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7B28CF5B1D0029B91C /* UserDefaults+.swift */; };
+		CB408A7E28CF5B810029B91C /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7D28CF5B810029B91C /* WhatsNewView.swift */; };
 		CB6E482728CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482828CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482928CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
@@ -41,7 +43,6 @@
 		CBC2E69828C8AB7000346EA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E69728C8AB7000346EA4 /* ContentView.swift */; };
 		CBC2E69A28C8AB7300346EA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E69928C8AB7300346EA4 /* Assets.xcassets */; };
 		CBC2E69D28C8AB7300346EA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBC2E69C28C8AB7300346EA4 /* Preview Assets.xcassets */; };
-		CBC2E69F28C8AB7300346EA4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E69E28C8AB7300346EA4 /* Persistence.swift */; };
 		CBC2E6A228C8AB7300346EA4 /* JobLess.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6A028C8AB7300346EA4 /* JobLess.xcdatamodeld */; };
 		CBC2E6AC28C8AB7300346EA4 /* JobLessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6AB28C8AB7300346EA4 /* JobLessTests.swift */; };
 		CBC2E6B628C8AB7300346EA4 /* JobLessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC2E6B528C8AB7300346EA4 /* JobLessUITests.swift */; };
@@ -81,6 +82,8 @@
 /* Begin PBXFileReference section */
 		CB408A7528CF55B70029B91C /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
 		CB408A7728CF57610029B91C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		CB408A7B28CF5B1D0029B91C /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		CB408A7D28CF5B810029B91C /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
 		CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB6E483D28CE90FF006DF6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6E484028CE9489006DF6CA /* JobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
@@ -103,7 +106,6 @@
 		CBC2E69728C8AB7000346EA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CBC2E69928C8AB7300346EA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBC2E69C28C8AB7300346EA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		CBC2E69E28C8AB7300346EA4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CBC2E6A128C8AB7300346EA4 /* JobLess.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JobLess.xcdatamodel; sourceTree = "<group>"; };
 		CBC2E6A728C8AB7300346EA4 /* JobLessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobLessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC2E6AB28C8AB7300346EA4 /* JobLessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobLessTests.swift; sourceTree = "<group>"; };
@@ -223,7 +225,6 @@
 				CBC2E6DB28C915C800346EA4 /* Helpers+Extensions */,
 				CBC2E6C728C8AF2B00346EA4 /* Views */,
 				CBC2E69928C8AB7300346EA4 /* Assets.xcassets */,
-				CBC2E69E28C8AB7300346EA4 /* Persistence.swift */,
 				CBC2E6C428C8ACFF00346EA4 /* Colors */,
 				CBC2E6A028C8AB7300346EA4 /* JobLess.xcdatamodeld */,
 				CBC2E69B28C8AB7300346EA4 /* Preview Content */,
@@ -271,6 +272,7 @@
 				CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */,
 				CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */,
 				CB408A7528CF55B70029B91C /* AboutUsView.swift */,
+				CB408A7D28CF5B810029B91C /* WhatsNewView.swift */,
 				CBC2E6D028C90EB500346EA4 /* Reusable Views */,
 				CBC2E6CA28C8B17300346EA4 /* HomeView.swift */,
 				CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */,
@@ -295,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				CB408A7728CF57610029B91C /* Utilities.swift */,
+				CB408A7B28CF5B1D0029B91C /* UserDefaults+.swift */,
 			);
 			path = "Helpers+Extensions";
 			sourceTree = "<group>";
@@ -457,11 +460,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB408A7628CF55B70029B91C /* AboutUsView.swift in Sources */,
-				CBC2E69F28C8AB7300346EA4 /* Persistence.swift in Sources */,
 				CBC1426228CB426000C44D64 /* JobContact.swift in Sources */,
 				CB6E484728CE95DE006DF6CA /* ApiErrors.swift in Sources */,
 				CBC2E6CB28C8B17300346EA4 /* HomeView.swift in Sources */,
 				CBC1426A28CB42A400C44D64 /* Job+Preview.swift in Sources */,
+				CB408A7E28CF5B810029B91C /* WhatsNewView.swift in Sources */,
 				CBC2E6EA28C9383F00346EA4 /* JobSearchView.swift in Sources */,
 				CBC2E69828C8AB7000346EA4 /* ContentView.swift in Sources */,
 				CBC2E6C928C8AF3300346EA4 /* AuthenticationView.swift in Sources */,
@@ -484,6 +487,7 @@
 				CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */,
 				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,
 				CB6E484328CE9559006DF6CA /* Collections.swift in Sources */,
+				CB408A7C28CF5B1D0029B91C /* UserDefaults+.swift in Sources */,
 				CB6E484B28CE995F006DF6CA /* SubmitterView.swift in Sources */,
 				CB6E483E28CE90FF006DF6CA /* AppDelegate.swift in Sources */,
 				CBC1426428CB426600C44D64 /* JobCategory.swift in Sources */,

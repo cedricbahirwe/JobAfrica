@@ -16,6 +16,7 @@ struct AboutUsView: View {
 
     var body: some View {
         VStack(spacing: 30) {
+            Spacer()
             VStack {
                 Image("app.logo")
                     .resizable()
