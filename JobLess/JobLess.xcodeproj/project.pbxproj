@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB408A7628CF55B70029B91C /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7528CF55B70029B91C /* AboutUsView.swift */; };
+		CB408A7828CF57610029B91C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7728CF57610029B91C /* Utilities.swift */; };
 		CB6E482728CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482828CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482928CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
@@ -77,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB408A7528CF55B70029B91C /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		CB408A7728CF57610029B91C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB6E483D28CE90FF006DF6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6E484028CE9489006DF6CA /* JobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			children = (
 				CBC2E6C828C8AF3300346EA4 /* AuthenticationView.swift */,
 				CBC2E6CE28C8F5FB00346EA4 /* JobDetailView.swift */,
+				CB408A7528CF55B70029B91C /* AboutUsView.swift */,
 				CBC2E6D028C90EB500346EA4 /* Reusable Views */,
 				CBC2E6CA28C8B17300346EA4 /* HomeView.swift */,
 				CBC2E6DE28C9345C00346EA4 /* MainMenuView.swift */,
@@ -289,6 +294,7 @@
 		CBC2E6DB28C915C800346EA4 /* Helpers+Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CB408A7728CF57610029B91C /* Utilities.swift */,
 			);
 			path = "Helpers+Extensions";
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB408A7628CF55B70029B91C /* AboutUsView.swift in Sources */,
 				CBC2E69F28C8AB7300346EA4 /* Persistence.swift in Sources */,
 				CBC1426228CB426000C44D64 /* JobContact.swift in Sources */,
 				CB6E484728CE95DE006DF6CA /* ApiErrors.swift in Sources */,
@@ -472,6 +479,7 @@
 				CBC1426828CB427200C44D64 /* JobDescription.swift in Sources */,
 				CBC1426028CB424E00C44D64 /* JobCompany.swift in Sources */,
 				CBC1425928CB3D8500C44D64 /* JobProtocol.swift in Sources */,
+				CB408A7828CF57610029B91C /* Utilities.swift in Sources */,
 				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
 				CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */,
 				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,

@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var jobs: [Job] = [.customerService]
     @StateObject private var jobStoreManager = JobStoreManager()
     @State private var selectedJob: Job?
-
-    @State private var colorScheme: ColorScheme? = nil
     @State private var selectedJobTag: JobTag = JobTag.all
     @State private var showMenu: Bool = false
     @State private var showSearch: Bool = false
@@ -30,9 +27,8 @@ struct HomeView: View {
                     onSearch: {
                         showSearch.toggle()
                     },
-                    onFilter: {
-                    })
-                
+                    onFilter: {})
+
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
                         .font(.system(.title, design: .rounded))
@@ -66,7 +62,6 @@ struct HomeView: View {
         }
         .sheet(item: $selectedJob,
                content: JobDetailView.init)
-        .preferredColorScheme(.dark)
         .onAppear() {
             jobStoreManager.loadJobs {
                 jobStoreManager.generalJobs = $0.map({ $0.toDomainModel() })

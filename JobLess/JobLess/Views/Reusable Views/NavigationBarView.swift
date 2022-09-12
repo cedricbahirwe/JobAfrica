@@ -22,7 +22,7 @@ struct NavigationBarView: View {
 
             navBarButton("magnifyingglass", action: onSearch)
 
-            navBarButton("slider.horizontal.3", action: onFilter)
+//            navBarButton("slider.horizontal.3", action: onFilter)
         }
     }
 

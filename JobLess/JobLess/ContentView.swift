@@ -22,8 +22,6 @@ struct ContentView: View {
         ZStack {
             HomeView()
 
-//            AuthenticationView()
-
             LaunchView($showLaunchView)
         }
         .onAppear(perform: {
