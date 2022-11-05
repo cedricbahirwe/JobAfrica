@@ -18,7 +18,7 @@ struct WhatsNewView: View {
                     .scaledToFit()
                     .frame(width: 100)
                     .cornerRadius(20)
-
+                    .padding(.vertical)
                 VStack {
                     Text("JobAfrica")
                         .font(.system(.title, design: .rounded).weight(.heavy))
@@ -39,7 +39,7 @@ struct WhatsNewView: View {
                     .minimumScaleFactor(0.6)
 
                 ScrollView(.vertical, showsIndicators: true) {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 30) {
 
                         featureView(icon: "clock.circle",
                                     title: "Up to Date",
