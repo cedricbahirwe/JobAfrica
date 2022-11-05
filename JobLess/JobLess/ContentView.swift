@@ -47,7 +47,7 @@ struct LaunchView: View {
                 Text("JobAfrica")
                     .font(.system(.largeTitle, design: .rounded))
                     .fontWeight(.bold)
-                    .foregroundColor(.foreground)
+                    .foregroundColor(.white)
                 
                 ProgressView()
             }

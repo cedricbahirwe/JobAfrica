@@ -190,7 +190,7 @@ struct SubmitterView: View {
 
     private func submit() {
         guard !jobName.isEmpty,
-              !jobName.description.isEmpty
+              !jobName.isEmpty
         else { return }
 
         guard let selectedCompany = selectedCompany else { return }

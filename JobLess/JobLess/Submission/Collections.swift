@@ -20,11 +20,11 @@ public enum FirebaseCollection: String {
     case promo = "promotion-jobs"
     #endif
 
-    #if DEBUG
-    case companies = "companies-test"
-    #else
+//    #if DEBUG
+//    case companies = "companies-test"
+//    #else
     case companies
-    #endif
+//    #endif
 
 
     case jobTags = "job-tags"

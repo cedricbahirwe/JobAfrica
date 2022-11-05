@@ -52,6 +52,13 @@ struct MainMenuView: View {
                                 MenuItemView("Contact", "abc.incs.001@gmail.com", true, action: { })
                                     .disabled(true)
                             }
+
+                            if #available(iOS 16.0, *) {
+                                ShareLink(item: URL(string: "https://apps.apple.com/us/app/jobafrica/id1643925736")!) {
+                                    MenuItemView("Share App", "Just One Click", action: { })
+                                        .disabled(true)
+                                }
+                            }
                         }
                     }
                 }
