@@ -15,24 +15,24 @@ protocol BaseModel {
     func toDomainModel() -> Model
 }
 
-public struct JobModel: Identifiable, Codable, BaseModel { 
-    @DocumentID public var id: String?
-    public var title: String
-    public var postDate: Date
-    public var jobLink: URL
-    public var description: JobDescription
-    public var company: JobCompany
+struct JobModel: Identifiable, Codable, BaseModel { 
+    @DocumentID var id: String?
+    var title: String
+    var postDate: Date
+    var jobLink: URL
+    var description: JobDescription
+    var company: JobCompany
 
-    public var type: JobType
-    public var category: JobCategory
-    public var location: String
-    public var contact: JobContact?
+    var type: JobType
+    var category: JobCategory
+    var location: String
+    var contact: JobContact?
 
-    public var tags: [JobTag]
-    public var skills: [JobSkill]
+    var tags: [JobTag]
+    var skills: [JobSkill]
 
     // OTHER
-    public var views: Int = 0
+    var views: Int = 0
 
     func toDomainModel() -> Job {
         Job(id: id!,
@@ -96,16 +96,16 @@ struct JobCategoryModel: Codable, BaseModel {
     }
 }
 
-public struct UserModel: Codable, BaseModel {
-    @DocumentID public var id: String?
-    public let name: String
-    public let model: String
-    public let identifier: String
-    public let osName: String
-    public let osVersion: String
-    public let lastSeenDate: Date
+struct UserModel: Codable, BaseModel {
+    @DocumentID var id: String?
+    let name: String
+    let model: String
+    let identifier: String
+    let osName: String
+    let osVersion: String
+    let lastSeenDate: Date
 
-    public static func getMetadata() -> UserModel {
+    static func getMetadata() -> UserModel {
         let device = UIDevice.current
         let osVersion = device.systemVersion
         let osName = device.systemName.lowercased()

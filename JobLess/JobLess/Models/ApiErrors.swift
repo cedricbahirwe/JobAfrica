@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ApiErrors: Error {
+enum ApiErrors: Error {
     case genericError
     case internetError
     case timeout

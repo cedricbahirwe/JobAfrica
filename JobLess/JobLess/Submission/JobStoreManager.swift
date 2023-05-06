@@ -17,7 +17,7 @@ final class JobStoreManager: ObservableObject {
     
     private let db = Firestore.firestore()
     
-    public init() {
+    init() {
         // Save User or update existing User
         try? saveUser(.getMetadata())
         
@@ -37,23 +37,23 @@ final class JobStoreManager: ObservableObject {
         }
     }
     
-    public func loadCompanies(completion: @escaping([JobCompany]) -> Void) {
+    func loadCompanies(completion: @escaping([JobCompany]) -> Void) {
         getContents(collection: .companies, completion: completion)
     }
     
-    public func loadTags(completion: @escaping([JobTagModel]) -> Void) {
+    func loadTags(completion: @escaping([JobTagModel]) -> Void) {
         getContents(collection: .jobTags, completion: completion)
     }
     
-    public func loadCategories(completion: @escaping([JobTagModel]) -> Void) {
+    func loadCategories(completion: @escaping([JobTagModel]) -> Void) {
         getContents(collection: .jobCategories, completion: completion)
     }
     
-    public func loadTypes(completion: @escaping([JobTypeModel]) -> Void) {
+    func loadTypes(completion: @escaping([JobTypeModel]) -> Void) {
         getContents(collection: .jobTypes, completion: completion)
     }
     
-    public func loadJobs(isPromos: Bool = false, completion:  @escaping([JobModel]) -> Void) {
+    func loadJobs(isPromos: Bool = false, completion:  @escaping([JobModel]) -> Void) {
         let collection: FirebaseCollection = isPromos ? .promo : .general
         getContents(collection: collection, completion: completion)
     }
@@ -69,6 +69,7 @@ final class JobStoreManager: ObservableObject {
                     completion([])
                     return
                 }
+            
                 
                 if let querySnapshot = querySnapshot {
                     let result = querySnapshot.documents.compactMap { document -> T? in
