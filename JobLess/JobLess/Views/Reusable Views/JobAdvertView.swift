@@ -41,53 +41,48 @@ struct JobAdvertView: View {
 
                 }
                 Spacer()
-
-                Text(job.type.rawValue.capitalized)
-                    .font(.caption)
-                    .padding(4)
-                    .background(Color.black.opacity(0.6))
-                    .cornerRadius(10)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(.white)
+                
+                Button {
+                    
+                } label: {
+                    Image(systemName: "bookmark")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(6)
+                        .frame(width: 30, height: 30)
+                        .overlay {
+                            Circle().stroke(Color.accentColor, lineWidth: 1)
+                        }
+                }
+                .hidden()
             }
             .frame(maxHeight: .infinity, alignment: .top)
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text(job.title)
-                    .fontWeight(.semibold)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.7)
-
+            VStack(alignment: .leading) {
                 Text(job.company.name)
                     .font(.system(.callout))
                     .opacity(0.9)
+                
+                Text(job.title)
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.9)
+
+                JobAdvertTag(tile: job.type.rawValue.capitalized)
+               
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(.white)
         }
-        .padding(10)
-        .frame(width: 150, height: 150)
-        .background(
-            ZStack {
-                if let logoURL = job.company.logoURL {
-                    AsyncImage(url: logoURL) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    } placeholder: {
-                        Image("company.logo.placeholder")
-                            .resizable()
-                            .scaledToFill()
-                    }
-                } else {
-                    Image("img1")
-                        .resizable()
-                        .opacity(0.8)
-                }
-            }
-        )
-        .cornerRadius(10)
+        .padding(20)
+        .frame(width: 260, height: 170)
+        .background(AppGradient.main)
+        .cornerRadius(20)
+        .overlay {
+            RoundedRectangle(cornerRadius: 20)
+                .strokeBorder(Color.gray.opacity(0.75), lineWidth: 1.5)
+        }
     }
 }
 
@@ -101,3 +96,37 @@ struct JobAdvertView_Previews: PreviewProvider {
     }
 }
 #endif
+
+
+enum AppGradient {
+    static var main: LinearGradient {
+        LinearGradient(
+            colors: [
+                Color(red: 13/255, green: 29/255, blue: 79/255),
+                Color(red: 13/255, green: 22/255, blue: 36/255),
+                Color(red: 28/255, green: 75/255, blue: 102/255),
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+    
+    
+    static var applyBackground: Color {
+        Color.red
+    }
+}
+
+struct JobAdvertTag: View {
+    let tile: String
+    var body: some View {
+        Text(tile)
+            .font(.callout.weight(.medium))
+            .padding(.vertical, 6)
+            .padding(.horizontal, 10)
+            .background(.white)
+            .clipShape(Capsule())
+            .foregroundColor(.black)
+            .lineLimit(1)
+    }
+}

@@ -16,22 +16,14 @@ struct JobDetailView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "x.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
-                        .foregroundColor(.primary)
+        VStack(spacing: 0) {
+            AppGradient.main.ignoresSafeArea(edges: .top)
+                .frame(height: UIScreen.main.bounds.height*0.2)
+                .overlay(alignment: .bottom) {
+                    Color.gray.frame(height: 2)
                 }
-                Spacer()
-            }
-            VStack(spacing: 12) {
-                if let logoURL = job.company.logoURL {
-                    AsyncImage(url: logoURL) { image in
+                .overlay(alignment: .bottomLeading) {
+                    AsyncImage(url: job.company.logoURL) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -40,85 +32,106 @@ struct JobDetailView: View {
                             .resizable()
                             .scaledToFill()
                     }
-                    .frame(width: 150, height: 150)
-                    .clipped()
+                    .frame(width: 80, height: 80)
+                    .background(.ultraThickMaterial)
                     .cornerRadius(20)
-                } else {
-                    Image("company.logo.placeholder")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(20)
+                    .shadow(color: .gray, radius: 2)
+                    .offset(y: 40)
+                    .padding(.leading, 20)
                 }
-
-                Text(job.title)
-                    .font(.system(.title, design: .rounded))
-                    .fontWeight(.semibold)
-
-                Text(job.location)
-                    .font(.system(.title2, design: .monospaced).weight(.semibold))
-
-                Text(job.postDate, style: .date)
-                    .font(.system(.callout).weight(.semibold))
-                    .foregroundColor(.secondary)
-            }
-
-            VStack {
-                ScrollView(.vertical, showsIndicators: false) {
-                    Text("Job Description")
-                        .font(.system(.title2, design: .monospaced).weight(.semibold))
-                        .padding(.vertical, 10)
-
-                    VStack(alignment: .leading) {
-                        ForEach(job.description.paragraphs, id: \.self) { paragraph in
-                            Group {
-                                if let title = paragraph.head {
-                                    Text(title)
-                                        .font(.system(.title))
-                                        .foregroundColor(.primary)
-                                }
-
-                                if let body = paragraph.body {
-                                    Text(body)
-                                        .font(.system(.title3))
-                                        .foregroundColor(.secondary)
-                                        .minimumScaleFactor(0.9)
-                                }
+                .overlay(alignment: .topLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .resizable()
+                            .scaledToFit()
+                            .padding(12)
+                            .frame(width: 45)
+                            .foregroundColor(.white)
+                            .overlay {
+                                Circle()
+                                    .stroke(Color.white, lineWidth: 2)
                             }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
+                    .padding()
+                }
+                .zIndex(20)
+            
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    Label(job.postDate.formatted(date: .long, time: .omitted), systemImage: "calendar")
+                        .font(.callout.weight(.semibold))
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.vertical, 20)
+                    
+                    VStack(alignment: .leading, spacing: 20) {
+                        VStack(alignment: .leading) {
+                            Text(job.company.name)
+                                .font(.title3)
+                                .opacity(0.8)
+                            
+                            Text(job.title)
+                                .font(.title)
+                                .fontWeight(.semibold)
                         }
-
-                        VStack(alignment: .leading, spacing: 20) {
-
-                            if let email = job.contact?.email {
-                                ContactLabel("Email Address", email)
+                        
+                        Text("Description")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        
+                        VStack(alignment: .leading) {
+                            ForEach(job.description.paragraphs, id: \.self) { paragraph in
+                                Group {
+                                    if let title = paragraph.head {
+                                        Text(title)
+                                            .font(.system(.title))
+                                            .foregroundColor(.primary)
+                                    }
+                                    
+                                    if let body = paragraph.body {
+                                        Text(body)
+                                            .opacity(0.7)
+                                            .minimumScaleFactor(0.9)
+                                    }
+                                }
                             }
-
-                            if let whatsapp = job.contact?.whatsapp {
-                                ContactLabel("WhatsApp Number", whatsapp)
+                            
+                            VStack(alignment: .leading, spacing: 20) {
+                                
+                                if let email = job.contact?.email {
+                                    ContactLabel("Email Address", email)
+                                }
+                                
+                                if let whatsapp = job.contact?.whatsapp {
+                                    ContactLabel("WhatsApp Number", whatsapp)
+                                }
+                                
+                                if let telegram = job.contact?.telegram {
+                                    ContactLabel("Telegram:", "@\(telegram)")
+                                }
                             }
-
-                            if let telegram = job.contact?.telegram {
-                                ContactLabel("Telegram:", "@\(telegram)")
-                            }
+                            .padding(.vertical, 10)
                         }
-                        .padding(.vertical, 10)
+                    }
+                    
+                    Link(destination: job.jobLink) {
+                        Label("Apply Now", systemImage: "link")
+                            .labelStyle(.titleOnly)
+                            .font(.system(.body).weight(.bold))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(Color.main)
+                            .cornerRadius(15)
                     }
                 }
-
-                Link(destination: job.jobLink) {
-                    Label("Apply Now", systemImage: "link")
-                        .labelStyle(.titleOnly)
-                        .font(.system(.body).weight(.bold))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(Color.main)
-                        .cornerRadius(15)
-                }
+                .padding(.horizontal, 20)
             }
-
+            .zIndex(10)
         }
-        .padding()
-        .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
         .task {
             do {
                 try await jobStoreManager.viewJob(job)
@@ -134,6 +147,7 @@ struct JobDetailView_Previews: PreviewProvider {
     static var previews: some View {
         JobDetailView(.customerService)
             .environmentObject(JobStoreManager())
+            .preferredColorScheme(.dark)
     }
 }
 #endif

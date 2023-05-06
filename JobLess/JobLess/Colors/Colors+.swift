@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static let main = Color("primary.red")
+    static var main = Color("primary.red")
 
     static let foreground = Color(.systemBackground)
 }

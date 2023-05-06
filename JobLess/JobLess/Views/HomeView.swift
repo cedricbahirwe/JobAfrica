@@ -37,17 +37,13 @@ struct HomeView: View {
                         showSearch.toggle()
                     },
                     onFilter: {})
-
+                .padding(.horizontal)
+                
                 VStack(alignment: .leading, spacing: 20) {
-                    Group {
-                        if selectedJobTag == .all {
-                            Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
-                        } else {
-                            Text(selectedJobTag.formatted)
-                        }
-                    }
-                    .font(.system(.title, design: .rounded))
-                    .layoutPriority(2)
+                    Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
+                        .font(.system(.title, design: .rounded))
+                        .layoutPriority(2)
+                        .padding(.horizontal)
                     
                     jobsAdvertsView
                     
@@ -56,7 +52,6 @@ struct HomeView: View {
                     recentPostedJobs
                 }
             }
-            .padding(.horizontal)
             .rotation3DEffect(.degrees(showMenu ? 45 : 0),
                               axis: (0,3,0),
                               anchor: .leading,
@@ -77,7 +72,7 @@ struct HomeView: View {
 
             LaunchView(jobStoreManager.isLoading, 0.9)
         }
-        .sheet(item: $selectedJob,
+        .fullScreenCover(item: $selectedJob,
                content: JobDetailView.init)
         .environmentObject(jobStoreManager)
     }
@@ -95,14 +90,13 @@ private extension HomeView {
             HStack {
                 ForEach(jobStoreManager.promoJobs) { job in
                     JobAdvertView(job)
-                        .padding(8)
-                        .background(.ultraThickMaterial)
-                        .cornerRadius(10)
+                        .padding(.trailing)
                         .onTapGesture {
                             selectedJob = job
                         }
                 }
             }
+            .padding(.leading)
         }
     }
     var recentPostedJobs: some View {
@@ -121,5 +115,7 @@ private extension HomeView {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
+        .padding(.horizontal)
     }
 }
+//rgba(15,21,27,255)
