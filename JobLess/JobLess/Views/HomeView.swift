@@ -39,17 +39,25 @@ struct HomeView: View {
                     onFilter: {})
                 .padding(.horizontal)
                 
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
-                        .font(.system(.title, design: .rounded))
-                        .layoutPriority(2)
-                        .padding(.horizontal)
-                    
-                    jobsAdvertsView
-                    
-                    JobTagsView(jobStoreManager.jobTags, selection: $selectedJobTag)
-                    
-                    recentPostedJobs
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 20, pinnedViews: .sectionHeaders) {
+                        Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
+                            .font(.system(.title, design: .rounded))
+                            .layoutPriority(2)
+                            .padding(.horizontal)
+                        
+                        jobsAdvertsView
+                        
+                        Section {
+                            recentPostedJobs
+                            
+                        } header: {
+                            JobTagsView(jobStoreManager.jobTags, selection: $selectedJobTag)
+                                .padding(.vertical, 6)
+                                .background(Color(.secondarySystemBackground))
+                            
+                        }
+                    }
                 }
             }
             .rotation3DEffect(.degrees(showMenu ? 45 : 0),
