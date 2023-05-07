@@ -15,18 +15,20 @@ struct JobTagsView: View {
 
     private let tags: [JobTag]
     @Binding var selection: JobTag
-
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 6) {
                 ForEach(tags, id:\.rawValue) { tag in
                     Text(tag.formatted)
-                        .font(.system(.subheadline, design: .rounded))
-                        .foregroundColor(selection == tag ? Color.white : Color.foreground)
+                        .font(.headline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.primary)
+                        .colorInvert()
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        .background(selection == tag ? Color.indigo : Color.primary)
-                        .cornerRadius(8)
+                        .background(selection == tag ? Color.cyan : Color.primary)
+                        .clipShape(Capsule())
                         .onTapGesture {
                             withAnimation {
                                 selection = tag
@@ -34,12 +36,15 @@ struct JobTagsView: View {
                         }
                 }
             }
+            .padding(.leading)
         }
     }
 }
 
+#if DEBUG
 struct JobTagsView_Previews: PreviewProvider {
     static var previews: some View {
         JobTagsView(JobTag.allCases, selection: .constant(.all))
     }
 }
+#endif

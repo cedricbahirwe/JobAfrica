@@ -37,26 +37,29 @@ struct HomeView: View {
                         showSearch.toggle()
                     },
                     onFilter: {})
-
-                VStack(alignment: .leading, spacing: 20) {
-                    Group {
-                        if selectedJobTag == .all {
-                            Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
-                        } else {
-                            Text(selectedJobTag.formatted)
+                .padding(.horizontal)
+                
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 20, pinnedViews: .sectionHeaders) {
+                        Text("Find a job for you\n\(Text("in Africa 🌍").bold())")
+                            .font(.system(.title, design: .rounded))
+                            .layoutPriority(2)
+                            .padding(.horizontal)
+                        
+                        jobsAdvertsView
+                        
+                        Section {
+                            recentPostedJobs
+                            
+                        } header: {
+                            JobTagsView(jobStoreManager.jobTags, selection: $selectedJobTag)
+                                .padding(.vertical, 6)
+                                .background(Color(.secondarySystemBackground))
+                            
                         }
                     }
-                    .font(.system(.title, design: .rounded))
-                    .layoutPriority(2)
-                    
-                    jobsAdvertsView
-                    
-                    JobTagsView(jobStoreManager.jobTags, selection: $selectedJobTag)
-                    
-                    recentPostedJobs
                 }
             }
-            .padding(.horizontal)
             .rotation3DEffect(.degrees(showMenu ? 45 : 0),
                               axis: (0,3,0),
                               anchor: .leading,
@@ -77,7 +80,7 @@ struct HomeView: View {
 
             LaunchView(jobStoreManager.isLoading, 0.9)
         }
-        .sheet(item: $selectedJob,
+        .fullScreenCover(item: $selectedJob,
                content: JobDetailView.init)
         .environmentObject(jobStoreManager)
     }
@@ -95,24 +98,25 @@ private extension HomeView {
             HStack {
                 ForEach(jobStoreManager.promoJobs) { job in
                     JobAdvertView(job)
-                        .padding(8)
-                        .background(.ultraThickMaterial)
-                        .cornerRadius(10)
+                        .padding(.trailing)
                         .onTapGesture {
                             selectedJob = job
                         }
                 }
             }
+            .padding(.leading)
         }
     }
     var recentPostedJobs: some View {
         ScrollView(.vertical, showsIndicators: false) {
             Section {
-                ForEach(filteredJobs) { job in
-                    JobRowView(job)
-                        .onTapGesture {
-                            selectedJob = job
-                        }
+                VStack(spacing: 15) {
+                    ForEach(filteredJobs) { job in
+                        JobRowView(job)
+                            .onTapGesture {
+                                selectedJob = job
+                            }
+                    }
                 }
             } header: {
                 Text("Recently Posted")
@@ -121,5 +125,6 @@ private extension HomeView {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
+        .padding(.horizontal)
     }
 }

@@ -40,7 +40,8 @@ struct LaunchView: View {
     
     var body: some View {
         ZStack {
-            Color.main.ignoresSafeArea()
+            AppGradient.main
+                .ignoresSafeArea()
                 .opacity(opacity)
             
             VStack {

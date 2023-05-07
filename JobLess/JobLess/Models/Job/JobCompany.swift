@@ -7,10 +7,10 @@
 
 import Foundation
 
-public struct JobCompany: Hashable, Codable {
-    public var name: String
-    public var description: String?
-    public var logoURL: URL?
-    public var location: String
-    public var website: URL?
+struct JobCompany: Hashable, Codable {
+    var name: String
+    var description: String?
+    var logoURL: URL?
+    var location: String
+    var website: URL?
 }

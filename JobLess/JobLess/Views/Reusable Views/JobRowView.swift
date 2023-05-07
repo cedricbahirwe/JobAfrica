@@ -8,59 +8,26 @@
 import SwiftUI
 
 struct JobRowView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let job: Job
     init(_ job: Job) {
         self.job = job
     }
 
     var body: some View {
-        HStack {
-            if let logoURL = job.company.logoURL {
-                AsyncImage(url: logoURL) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } placeholder: {
-                    Image("company.logo.placeholder")
-                        .resizable()
-                        .scaledToFill()
-                }
-                .frame(width: 50, height: 50)
-                .clipped()
-                .cornerRadius(8)
-            } else {
-                Image("company.logo.placeholder")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 50, height: 50)
-                    .clipped()
-                    .cornerRadius(8)
+        JobItemView(job: job, isExpanded: true)
+            .padding(20)
+            .frame(maxWidth: .infinity)        
+            .background(
+                colorScheme == .light ?
+                Color(red: 37/255, green: 40/255, blue: 42/255) :
+                    Color.darkerBackground
+            )
+            .cornerRadius(20)
+            .overlay {
+                RoundedRectangle(cornerRadius: 20)
+                    .strokeBorder(Color.gray.opacity(0.75), lineWidth: 1.5)
             }
-
-
-            VStack(alignment: .leading, spacing: 8) {
-                Text(job.title)
-                    .font(.system(.headline, design: .rounded))
-                    .fontWeight(.semibold)
-
-                HStack {
-                    Text(job.company.name)
-                        .font(.system(.subheadline, design: .rounded))
-                        .foregroundColor(.secondary)
-
-                    Spacer(minLength: 1)
-
-                    Text("\(job.type.rawValue.capitalized) - \(job.category.rawValue.capitalized)")
-                        .font(.system(.caption, design: .rounded))
-                        .foregroundColor(.secondary)
-                }
-                .lineLimit(1)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .padding(10)
-        .background(Color.foreground)
-        .cornerRadius(10)
     }
 }
 
@@ -68,6 +35,9 @@ struct JobRowView: View {
 struct JobRowView_Previews: PreviewProvider {
     static var previews: some View {
         JobRowView(.customerService)
+            .padding()
+            .previewLayout(.sizeThatFits)
+//            .preferredColorScheme(.dark)
     }
 }
 #endif
