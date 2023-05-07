@@ -99,6 +99,18 @@ struct JobDetailView: View {
                                 }
                             }
                             
+                            
+                            HStack {
+                                VStack(alignment: .leading, spacing: 20) {
+                                    Text("\(job.type.rawValue.capitalized) - \(job.category.rawValue.capitalized)")
+                                        .font(.system(.caption, design: .rounded))
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                                .background(Color.darkerBackground)
+                                .cornerRadius(20)
+                            }
+                            
                             VStack(alignment: .leading, spacing: 20) {
                                 
                                 if let email = job.contact?.email {
@@ -117,6 +129,8 @@ struct JobDetailView: View {
                         }
                     }
                     
+                    lazy var randomColor: Color = [.mint, .main, .teal, .cyan, .orange, .green, .yellow, .indigo, .blue, .pink].randomElement()!
+
                     Link(destination: job.jobLink) {
                         Label("Apply Now", systemImage: "link")
                             .labelStyle(.titleOnly)
@@ -124,7 +138,7 @@ struct JobDetailView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(Color.main)
+                            .background(randomColor)
                             .cornerRadius(15)
                     }
                 }
@@ -147,7 +161,7 @@ struct JobDetailView_Previews: PreviewProvider {
     static var previews: some View {
         JobDetailView(.customerService)
             .environmentObject(JobStoreManager())
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
     }
 }
 #endif

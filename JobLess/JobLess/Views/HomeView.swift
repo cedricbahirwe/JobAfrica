@@ -110,11 +110,13 @@ private extension HomeView {
     var recentPostedJobs: some View {
         ScrollView(.vertical, showsIndicators: false) {
             Section {
-                ForEach(filteredJobs) { job in
-                    JobRowView(job)
-                        .onTapGesture {
-                            selectedJob = job
-                        }
+                VStack(spacing: 15) {
+                    ForEach(filteredJobs) { job in
+                        JobRowView(job)
+                            .onTapGesture {
+                                selectedJob = job
+                            }
+                    }
                 }
             } header: {
                 Text("Recently Posted")
@@ -126,4 +128,3 @@ private extension HomeView {
         .padding(.horizontal)
     }
 }
-//rgba(15,21,27,255)

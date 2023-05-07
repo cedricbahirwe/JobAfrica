@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum JobTag: String, Codable, CaseIterable {
+enum JobTag: String, Codable, CaseIterable {
     case all
     case mobile
     case iOS
@@ -17,7 +17,7 @@ public enum JobTag: String, Codable, CaseIterable {
     case frontend
     case other
 
-    public var formatted: String {
+    var formatted: String {
         switch self {
         case .iOS:
             return "iOS"

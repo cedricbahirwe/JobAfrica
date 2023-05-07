@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum FirebaseCollection: String {
+enum FirebaseCollection: String {
     #if DEBUG
     case general = "all-jobs-test"
     #else
