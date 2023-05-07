@@ -50,24 +50,17 @@ struct HomeView: View {
                         
                         Section {
                             recentPostedJobs
-                            
                         } header: {
                             JobTagsView(jobStoreManager.jobTags, selection: $selectedJobTag)
-                                .padding(.vertical, 6)
-                                .background(Color(.secondarySystemBackground))
-                            
                         }
                     }
                 }
             }
+            .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
             .rotation3DEffect(.degrees(showMenu ? 45 : 0),
-                              axis: (0,3,0),
-                              anchor: .leading,
-                              anchorZ: 1,
-                              perspective: 1)
+                              axis: (0,1,0))
             .offset(x: showMenu ? screenSize.width*0.8 : 0)
             .disabled(showMenu)
-            .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
 
             JobSearchView(searchEntry: $searchEntry, isPresented: $showSearch)
                 .scaleEffect(showSearch ? 1 : 0.1 , anchor: .topTrailing)
@@ -86,11 +79,13 @@ struct HomeView: View {
     }
 }
 
+#if DEBUG
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
 }
+#endif
 
 private extension HomeView {
     var jobsAdvertsView: some View {
@@ -107,22 +102,20 @@ private extension HomeView {
             .padding(.leading)
         }
     }
+    
     var recentPostedJobs: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            Section {
-                VStack(spacing: 15) {
-                    ForEach(filteredJobs) { job in
-                        JobRowView(job)
-                            .onTapGesture {
-                                selectedJob = job
-                            }
-                    }
+        VStack(alignment: .leading) {
+            Text("Recently Posted")
+                .font(.title3)
+                .bold()
+                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 15) {
+                ForEach(filteredJobs) { job in
+                    JobRowView(job)
+                        .onTapGesture {
+                            selectedJob = job
+                        }
                 }
-            } header: {
-                Text("Recently Posted")
-                    .font(.title3)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .padding(.horizontal)

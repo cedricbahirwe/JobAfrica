@@ -37,7 +37,9 @@ struct JobTagsView: View {
                 }
             }
             .padding(.leading)
+            .padding(.vertical, 6)
         }
+        .background(Color(.secondarySystemBackground))
     }
 }
 
