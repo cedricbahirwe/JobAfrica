@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JobCompany: Hashable, Equatable, Codable {
+struct JobCompany: Hashable, Codable {
     var name: String
     var description: String?
     var logoURL: URL?

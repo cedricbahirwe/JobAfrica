@@ -8,14 +8,12 @@
 import Foundation
 import GoogleSignIn
 import GoogleAPIClientForREST_Sheets
-import GoogleAPIClientForREST_Drive
 
 @MainActor
 final class GoogleSheetsAPI: ObservableObject {
     private let sheetLink = "https://docs.google.com/spreadsheets/d/1P3n23dvKgKuhwEpxMnGUMSGY3n2lrHBgu-UpWKQ6V4g/edit?usp=sharing"
         
     let sheetService = GTLRSheetsService()
-    let driveService = GTLRDriveService()
     
     @Published var signInState = false
     
@@ -41,9 +39,6 @@ final class GoogleSheetsAPI: ObservableObject {
         sheetService.apiKey = K.apiKey
         sheetService.authorizer = GIDSignIn.sharedInstance.currentUser?.fetcherAuthorizer
         
-        driveService.apiKey = K.apiKey
-        driveService.authorizer = GIDSignIn.sharedInstance.currentUser?.fetcherAuthorizer
-        
         servicesOn = true
     }
     
@@ -52,7 +47,7 @@ final class GoogleSheetsAPI: ObservableObject {
             do {
                 let stringJob = try await createJob(job)
                 self.appendOn = true
-                print("Saved✅:", JobHelper.getJob(from: stringJob))
+                print("Saved✅:", JobHelper.getJob(from: stringJob)!)
             } catch {
                 print("Unable to save job", error.localizedDescription)
             }
