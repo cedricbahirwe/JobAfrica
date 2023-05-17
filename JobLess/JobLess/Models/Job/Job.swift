@@ -12,23 +12,22 @@ struct Job: Identifiable, Codable {
     var title: String
     var postDate: Date
     var jobLink: URL
-    var description: JobDescription
+    var description: String
     var company: JobCompany
 
     var type: JobType
     var category: JobCategory
     var location: String
-    var contact: JobContact?
+    var contact: JobContact
 
     var tags: [JobTag]
     var skills: [JobSkill]
 
-    // OTHER
     var views: Int = 0
 }
 
 extension Job {
     var miniDescription: String? {
-        description.paragraphs.first?.body
+        String(description.prefix(140))
     }
 }

@@ -14,4 +14,8 @@ struct JobDescription: Codable {
         let head: String?
         let body: String?
     }
+    
+    var fullDescription: String {
+        paragraphs.compactMap(\.body).joined(separator: ", ")
+    }
 }

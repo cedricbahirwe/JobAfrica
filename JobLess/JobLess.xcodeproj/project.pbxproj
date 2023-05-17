@@ -31,7 +31,13 @@
 		CB6E484728CE95DE006DF6CA /* ApiErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E484628CE95DE006DF6CA /* ApiErrors.swift */; };
 		CB6E484928CE975F006DF6CA /* JobStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E484828CE975F006DF6CA /* JobStoreManager.swift */; };
 		CB6E484B28CE995F006DF6CA /* SubmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6E484A28CE995F006DF6CA /* SubmitterView.swift */; };
-		CBC1425928CB3D8500C44D64 /* JobProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1425828CB3D8500C44D64 /* JobProtocol.swift */; };
+		CB8978AA2A1374DF00BD23B9 /* GoogleSheetsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8978A92A1374DF00BD23B9 /* GoogleSheetsAPI.swift */; };
+		CB8978AD2A137AC300BD23B9 /* GoogleAPIClientForREST_Drive in Frameworks */ = {isa = PBXBuildFile; productRef = CB8978AC2A137AC300BD23B9 /* GoogleAPIClientForREST_Drive */; };
+		CB8978AF2A137AC300BD23B9 /* GoogleAPIClientForREST_Sheets in Frameworks */ = {isa = PBXBuildFile; productRef = CB8978AE2A137AC300BD23B9 /* GoogleAPIClientForREST_Sheets */; };
+		CB8978B22A137DF800BD23B9 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CB8978B12A137DF800BD23B9 /* GoogleSignIn */; };
+		CB8978B42A137DF800BD23B9 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CB8978B32A137DF800BD23B9 /* GoogleSignInSwift */; };
+		CB8978B82A1399B700BD23B9 /* SpreadSheetTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8978B72A1399B700BD23B9 /* SpreadSheetTestView.swift */; };
+		CBAC672C2A1507C90027D1FD /* JobHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAC672B2A1507C80027D1FD /* JobHelper.swift */; };
 		CBC1425D28CB3D8C00C44D64 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1425C28CB3D8C00C44D64 /* Job.swift */; };
 		CBC1426028CB424E00C44D64 /* JobCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1425F28CB424E00C44D64 /* JobCompany.swift */; };
 		CBC1426228CB426000C44D64 /* JobContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC1426128CB426000C44D64 /* JobContact.swift */; };
@@ -94,7 +100,9 @@
 		CB6E484628CE95DE006DF6CA /* ApiErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrors.swift; sourceTree = "<group>"; };
 		CB6E484828CE975F006DF6CA /* JobStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobStoreManager.swift; sourceTree = "<group>"; };
 		CB6E484A28CE995F006DF6CA /* SubmitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitterView.swift; sourceTree = "<group>"; };
-		CBC1425828CB3D8500C44D64 /* JobProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobProtocol.swift; sourceTree = "<group>"; };
+		CB8978A92A1374DF00BD23B9 /* GoogleSheetsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSheetsAPI.swift; sourceTree = "<group>"; };
+		CB8978B72A1399B700BD23B9 /* SpreadSheetTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadSheetTestView.swift; sourceTree = "<group>"; };
+		CBAC672B2A1507C80027D1FD /* JobHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobHelper.swift; sourceTree = "<group>"; };
 		CBC1425C28CB3D8C00C44D64 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		CBC1425F28CB424E00C44D64 /* JobCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCompany.swift; sourceTree = "<group>"; };
 		CBC1426128CB426000C44D64 /* JobContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobContact.swift; sourceTree = "<group>"; };
@@ -136,10 +144,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8978AF2A137AC300BD23B9 /* GoogleAPIClientForREST_Sheets in Frameworks */,
 				CB6E483428CE889E006DF6CA /* FirebaseDatabaseSwift in Frameworks */,
 				CB6E483028CE889E006DF6CA /* FirebaseCrashlytics in Frameworks */,
 				CB6E483C28CE889E006DF6CA /* FirebaseStorage in Frameworks */,
 				CB6E482C28CE889E006DF6CA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				CB8978B42A137DF800BD23B9 /* GoogleSignInSwift in Frameworks */,
+				CB8978B22A137DF800BD23B9 /* GoogleSignIn in Frameworks */,
+				CB8978AD2A137AC300BD23B9 /* GoogleAPIClientForREST_Drive in Frameworks */,
 				CB6E483828CE889E006DF6CA /* FirebaseFirestoreSwift in Frameworks */,
 				CB6E483228CE889E006DF6CA /* FirebaseDatabase in Frameworks */,
 				CB6E482E28CE889E006DF6CA /* FirebaseAuth in Frameworks */,
@@ -179,8 +191,8 @@
 		CBC1425E28CB424B00C44D64 /* Job */ = {
 			isa = PBXGroup;
 			children = (
-				CBC1425828CB3D8500C44D64 /* JobProtocol.swift */,
 				CBC1425C28CB3D8C00C44D64 /* Job.swift */,
+				CBAC672B2A1507C80027D1FD /* JobHelper.swift */,
 				CBC1426728CB427200C44D64 /* JobDescription.swift */,
 				CBC1426128CB426000C44D64 /* JobContact.swift */,
 				CBC1425F28CB424E00C44D64 /* JobCompany.swift */,
@@ -222,6 +234,8 @@
 				CB6E483D28CE90FF006DF6CA /* AppDelegate.swift */,
 				CBC2E69728C8AB7000346EA4 /* ContentView.swift */,
 				CB6E484A28CE995F006DF6CA /* SubmitterView.swift */,
+				CB8978A92A1374DF00BD23B9 /* GoogleSheetsAPI.swift */,
+				CB8978B72A1399B700BD23B9 /* SpreadSheetTestView.swift */,
 				CB6E483F28CE9482006DF6CA /* Submission */,
 				CBC2E6E028C9350200346EA4 /* Models */,
 				CBC2E6DB28C915C800346EA4 /* Helpers+Extensions */,
@@ -341,6 +355,10 @@
 				CB6E483728CE889E006DF6CA /* FirebaseFirestoreSwift */,
 				CB6E483928CE889E006DF6CA /* FirebaseRemoteConfig */,
 				CB6E483B28CE889E006DF6CA /* FirebaseStorage */,
+				CB8978AC2A137AC300BD23B9 /* GoogleAPIClientForREST_Drive */,
+				CB8978AE2A137AC300BD23B9 /* GoogleAPIClientForREST_Sheets */,
+				CB8978B12A137DF800BD23B9 /* GoogleSignIn */,
+				CB8978B32A137DF800BD23B9 /* GoogleSignInSwift */,
 			);
 			productName = JobLess;
 			productReference = CBC2E69228C8AB7000346EA4 /* JobAfrica.app */;
@@ -416,6 +434,8 @@
 			mainGroup = CBC2E68928C8AB7000346EA4;
 			packageReferences = (
 				CB6E482A28CE889E006DF6CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CB8978AB2A137AC300BD23B9 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */,
+				CB8978B02A137DF700BD23B9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = CBC2E69328C8AB7000346EA4 /* Products */;
 			projectDirPath = "";
@@ -483,15 +503,17 @@
 				CB408A8228CF62050029B91C /* User.swift in Sources */,
 				CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
+				CBAC672C2A1507C90027D1FD /* JobHelper.swift in Sources */,
+				CB8978AA2A1374DF00BD23B9 /* GoogleSheetsAPI.swift in Sources */,
 				CBC1426828CB427200C44D64 /* JobDescription.swift in Sources */,
 				CBC1426028CB424E00C44D64 /* JobCompany.swift in Sources */,
-				CBC1425928CB3D8500C44D64 /* JobProtocol.swift in Sources */,
 				CB408A7828CF57610029B91C /* Utilities.swift in Sources */,
 				CBC2E6CF28C8F5FB00346EA4 /* JobDetailView.swift in Sources */,
 				CBC2E6E628C9377700346EA4 /* AppTheme.swift in Sources */,
 				CBC2E6D228C90EC600346EA4 /* JobRowView.swift in Sources */,
 				CB6E484328CE9559006DF6CA /* Collections.swift in Sources */,
 				CB408A7C28CF5B1D0029B91C /* UserDefaults+.swift in Sources */,
+				CB8978B82A1399B700BD23B9 /* SpreadSheetTestView.swift in Sources */,
 				CB6E484B28CE995F006DF6CA /* SubmitterView.swift in Sources */,
 				CB6E483E28CE90FF006DF6CA /* AppDelegate.swift in Sources */,
 				CBC1426428CB426600C44D64 /* JobCategory.swift in Sources */,
@@ -839,6 +861,22 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		CB8978AB2A137AC300BD23B9 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/google-api-objectivec-client-for-rest.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		CB8978B02A137DF700BD23B9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -886,6 +924,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CB6E482A28CE889E006DF6CA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		CB8978AC2A137AC300BD23B9 /* GoogleAPIClientForREST_Drive */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB8978AB2A137AC300BD23B9 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */;
+			productName = GoogleAPIClientForREST_Drive;
+		};
+		CB8978AE2A137AC300BD23B9 /* GoogleAPIClientForREST_Sheets */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB8978AB2A137AC300BD23B9 /* XCRemoteSwiftPackageReference "google-api-objectivec-client-for-rest" */;
+			productName = GoogleAPIClientForREST_Sheets;
+		};
+		CB8978B12A137DF800BD23B9 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB8978B02A137DF700BD23B9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		CB8978B32A137DF800BD23B9 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB8978B02A137DF700BD23B9 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

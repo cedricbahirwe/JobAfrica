@@ -24,6 +24,7 @@ struct HomeView: View {
         jobStoreManager.generalJobs.filter({ $0.title.lowercased() == searchEntry.lowercased() })
     }
 
+    @StateObject var sheetStore = GoogleSheetsAPI()
     var body: some View {
         ZStack {
             VStack {
