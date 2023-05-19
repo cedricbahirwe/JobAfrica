@@ -19,15 +19,16 @@ struct JobTagsView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 6) {
-                ForEach(tags, id:\.rawValue) { tag in
+                ForEach(tags, id: \.rawValue) { tag in
                     Text(tag.formatted)
                         .font(.headline)
                         .fontWeight(.medium)
-                        .foregroundColor(.primary)
-                        .colorInvert()
+                        .foregroundColor(selection == tag ? .white : Color(.systemBackground))
+//                        .foregroundColor(selection == tag ? .primary : .white)
+//                        .colorInvert()
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        .background(selection == tag ? Color.cyan : Color.primary)
+                        .background(selection == tag ? Color.main : Color.primary)
                         .clipShape(Capsule())
                         .onTapGesture {
                             withAnimation {

@@ -47,7 +47,9 @@ struct HomeView: View {
                             .layoutPriority(2)
                             .padding(.horizontal)
                         
-                        jobsAdvertsView
+                        if !jobStoreManager.promoJobs.isEmpty {
+                            jobsAdvertsView
+                        }
                         
                         Section {
                             recentPostedJobs
@@ -63,14 +65,14 @@ struct HomeView: View {
             .offset(x: showMenu ? screenSize.width*0.8 : 0)
             .disabled(showMenu)
 
-            JobSearchView(searchEntry: $searchEntry, isPresented: $showSearch)
-                .scaleEffect(showSearch ? 1 : 0.1 , anchor: .topTrailing)
-                .cornerRadius(showSearch ?  0 : CGFloat.infinity)
-                .animation(.easeInOut(duration: 0.3), value: showSearch)
-                .offset(x: showSearch ? 0 : -80)
-                .allowsHitTesting(showSearch)
+//            JobSearchView(searchEntry: $searchEntry, isPresented: $showSearch)
+//                .scaleEffect(showSearch ? 1 : 0.1 , anchor: .topTrailing)
+//                .cornerRadius(showSearch ?  0 : CGFloat.infinity)
+//                .animation(.easeInOut(duration: 0.3), value: showSearch)
+//                .offset(x: showSearch ? 0 : -80)
+//                .allowsHitTesting(showSearch)
 
-            MainMenuView(isPresented: $showMenu, screenSize: screenSize)
+            SettingsView(isPresented: $showMenu, screenSize: screenSize)
 
             AppLaunchView(jobStoreManager.isLoading, 0.9)
         }
@@ -84,23 +86,31 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .preferredColorScheme(.dark)
     }
 }
 #endif
 
 private extension HomeView {
     var jobsAdvertsView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(jobStoreManager.promoJobs) { job in
-                    JobAdvertView(job)
-                        .padding(.trailing)
-                        .onTapGesture {
-                            selectedJob = job
-                        }
+        VStack(alignment: .leading) {
+            Text("Trending ")
+                .font(.title3)
+                .bold()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(jobStoreManager.promoJobs) { job in
+                        JobAdvertView(job)
+                            .padding(.trailing)
+                            .onTapGesture {
+                                selectedJob = job
+                            }
+                    }
                 }
+                .padding(.leading)
             }
-            .padding(.leading)
         }
     }
     
