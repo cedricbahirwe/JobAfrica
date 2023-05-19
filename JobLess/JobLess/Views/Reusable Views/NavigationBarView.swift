@@ -14,9 +14,10 @@ struct NavigationBarView: View {
 
     var body: some View {
         HStack(spacing: 20) {
-            navBarButton("line.3.horizontal.decrease",
+            navBarButton("gear",
                          alignment: .leading,
                          action: onMenu)
+            .foregroundColor(.main)
 
             Spacer()
 

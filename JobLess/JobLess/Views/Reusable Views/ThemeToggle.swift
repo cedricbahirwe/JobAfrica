@@ -10,7 +10,7 @@ import SwiftUI
 struct ThemeToggle: View {
     @AppStorage(UserDefaultsKeys.appColorScheme)
     private var appTheme: AppTheme = .dark
-    var onThemeChange: (_ newTheme: AppTheme) -> Void = { _ in }
+    var onThemeChange: (_ newTheme: AppTheme) -> Void
 
     var body: some View {
         Picker("App Theme", selection: $appTheme) {
@@ -20,12 +20,11 @@ struct ThemeToggle: View {
         }
         .onChange(of: appTheme, perform: onThemeChange)
         .pickerStyle(SegmentedPickerStyle())
-        .colorScheme(.dark)
     }
 }
 struct ThemeToggle_Previews: PreviewProvider {
     static var previews: some View {
-        ThemeToggle()
+        ThemeToggle() { _ in }
             .padding()
             .previewLayout(.sizeThatFits)
     }

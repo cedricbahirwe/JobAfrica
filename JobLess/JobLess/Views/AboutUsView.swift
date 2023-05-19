@@ -23,9 +23,10 @@ struct AboutUsView: View {
                     .scaledToFit()
                     .frame(width: 150)
                     .cornerRadius(15)
+                    .padding()
 
                 Text("JobAfrica")
-                    .font(.system(.title3, design: .rounded).weight(.bold))
+                    .font(.system(.title2, design: .rounded).weight(.bold))
                     .foregroundColor(.main)
             }
             .padding(.top, 30)
@@ -39,10 +40,11 @@ struct AboutUsView: View {
                     .foregroundColor(.secondary)
             }
 
-            Text("Designed and developed by\n[Cédric Bahirwe](https://twitter.com/cedricbahirwe)")
+            Text("Designed and developed by\n[Cédric Bahirwe](https://www.linkedin.com/in/cedricbahirwe)")
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
+                .tint(.main)
 
             Spacer()
 
@@ -50,7 +52,6 @@ struct AboutUsView: View {
                 dismiss()
             } label: {
                 Text("Done")
-                    .font(.body.bold())
                     .font(.system(.body).weight(.bold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

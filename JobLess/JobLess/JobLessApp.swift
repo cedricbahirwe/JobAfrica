@@ -19,11 +19,7 @@ struct JobLessApp: App {
 
     var body: some Scene {
         WindowGroup {
-            //            SubmitterView()
             ContentView()
-//                .sheet(isPresented: .constant(true), content: {
-//                    SubmitterView()
-//                })
                 .sheet(isPresented: $showWelcomeView) {
                     WhatsNewView(isPresented: $showWelcomeView)
                 }

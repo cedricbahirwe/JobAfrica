@@ -24,6 +24,7 @@ struct HomeView: View {
         jobStoreManager.generalJobs.filter({ $0.title.lowercased() == searchEntry.lowercased() })
     }
 
+    @StateObject var sheetStore = GoogleSheetsAPI()
     var body: some View {
         ZStack {
             VStack {
@@ -46,39 +47,34 @@ struct HomeView: View {
                             .layoutPriority(2)
                             .padding(.horizontal)
                         
-                        jobsAdvertsView
+                        if !jobStoreManager.promoJobs.isEmpty {
+                            jobsAdvertsView
+                        }
                         
                         Section {
                             recentPostedJobs
-                            
                         } header: {
                             JobTagsView(jobStoreManager.jobTags, selection: $selectedJobTag)
-                                .padding(.vertical, 6)
-                                .background(Color(.secondarySystemBackground))
-                            
                         }
                     }
                 }
             }
+            .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
             .rotation3DEffect(.degrees(showMenu ? 45 : 0),
-                              axis: (0,3,0),
-                              anchor: .leading,
-                              anchorZ: 1,
-                              perspective: 1)
+                              axis: (0,1,0))
             .offset(x: showMenu ? screenSize.width*0.8 : 0)
             .disabled(showMenu)
-            .background(Color(.secondarySystemBackground), ignoresSafeAreaEdges: .all)
 
-            JobSearchView(searchEntry: $searchEntry, isPresented: $showSearch)
-                .scaleEffect(showSearch ? 1 : 0.1 , anchor: .topTrailing)
-                .cornerRadius(showSearch ?  0 : CGFloat.infinity)
-                .animation(.easeInOut(duration: 0.3), value: showSearch)
-                .offset(x: showSearch ? 0 : -80)
-                .allowsHitTesting(showSearch)
+//            JobSearchView(searchEntry: $searchEntry, isPresented: $showSearch)
+//                .scaleEffect(showSearch ? 1 : 0.1 , anchor: .topTrailing)
+//                .cornerRadius(showSearch ?  0 : CGFloat.infinity)
+//                .animation(.easeInOut(duration: 0.3), value: showSearch)
+//                .offset(x: showSearch ? 0 : -80)
+//                .allowsHitTesting(showSearch)
 
-            MainMenuView(isPresented: $showMenu, screenSize: screenSize)
+            SettingsView(isPresented: $showMenu, screenSize: screenSize)
 
-            LaunchView(jobStoreManager.isLoading, 0.9)
+            AppLaunchView(jobStoreManager.isLoading, 0.9)
         }
         .fullScreenCover(item: $selectedJob,
                content: JobDetailView.init)
@@ -86,43 +82,51 @@ struct HomeView: View {
     }
 }
 
+#if DEBUG
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .preferredColorScheme(.dark)
     }
 }
+#endif
 
 private extension HomeView {
     var jobsAdvertsView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(jobStoreManager.promoJobs) { job in
-                    JobAdvertView(job)
-                        .padding(.trailing)
-                        .onTapGesture {
-                            selectedJob = job
-                        }
-                }
-            }
-            .padding(.leading)
-        }
-    }
-    var recentPostedJobs: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            Section {
-                VStack(spacing: 15) {
-                    ForEach(filteredJobs) { job in
-                        JobRowView(job)
+        VStack(alignment: .leading) {
+            Text("Trending ")
+                .font(.title3)
+                .bold()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(jobStoreManager.promoJobs) { job in
+                        JobAdvertView(job)
+                            .padding(.trailing)
                             .onTapGesture {
                                 selectedJob = job
                             }
                     }
                 }
-            } header: {
-                Text("Recently Posted")
-                    .font(.title3)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading)
+            }
+        }
+    }
+    
+    var recentPostedJobs: some View {
+        VStack(alignment: .leading) {
+            Text("Recently Posted")
+                .font(.title3)
+                .bold()
+                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(spacing: 15) {
+                ForEach(filteredJobs) { job in
+                    JobRowView(job)
+                        .onTapGesture {
+                            selectedJob = job
+                        }
+                }
             }
         }
         .padding(.horizontal)

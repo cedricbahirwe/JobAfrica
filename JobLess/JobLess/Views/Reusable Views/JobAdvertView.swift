@@ -18,7 +18,7 @@ struct JobAdvertView: View {
         JobItemView(job: job, isExpanded: false)
             .padding(20)
             .frame(width: 260, height: 190)
-            .background(AppGradient.main)
+            .background(AppGradient.mainGradient)
             .cornerRadius(20)
             .overlay {
                 RoundedRectangle(cornerRadius: 20)
@@ -39,25 +39,6 @@ struct JobAdvertView_Previews: PreviewProvider {
 #endif
 
 
-enum AppGradient {
-    static var main: LinearGradient {
-        LinearGradient(
-            colors: [
-                Color(red: 13/255, green: 29/255, blue: 79/255),
-                Color(red: 13/255, green: 22/255, blue: 36/255),
-                Color(red: 28/255, green: 75/255, blue: 102/255),
-            ],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-    }
-    
-    
-    static var applyBackground: Color {
-        Color.red
-    }
-}
-
 struct JobAdvertTag: View {
     let tile: String
     var body: some View {
@@ -71,7 +52,6 @@ struct JobAdvertTag: View {
             .lineLimit(1)
     }
 }
-
 
 struct JobItemView: View {
     let job: Job

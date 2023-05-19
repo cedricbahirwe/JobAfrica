@@ -10,5 +10,4 @@ import Foundation
 struct JobContact: Codable {
     var email: String?
     var whatsapp: String?
-    var telegram: String?
 }

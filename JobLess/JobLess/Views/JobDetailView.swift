@@ -9,6 +9,7 @@ import SwiftUI
 
 struct JobDetailView: View {
     private let job: Job
+
     init(_ job: Job) {
         self.job = job
     }
@@ -17,7 +18,7 @@ struct JobDetailView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            AppGradient.main.ignoresSafeArea(edges: .top)
+            AppGradient.mainGradient.ignoresSafeArea(edges: .top)
                 .frame(height: UIScreen.main.bounds.height*0.2)
                 .overlay(alignment: .bottom) {
                     Color.gray.frame(height: 2)
@@ -83,22 +84,9 @@ struct JobDetailView: View {
                             .fontWeight(.semibold)
                         
                         VStack(alignment: .leading) {
-                            ForEach(job.description.paragraphs, id: \.self) { paragraph in
-                                Group {
-                                    if let title = paragraph.head {
-                                        Text(title)
-                                            .font(.system(.title))
-                                            .foregroundColor(.primary)
-                                    }
-                                    
-                                    if let body = paragraph.body {
-                                        Text(body)
-                                            .opacity(0.7)
-                                            .minimumScaleFactor(0.9)
-                                    }
-                                }
-                            }
-                            
+                            Text(job.description)
+                                .opacity(0.7)
+                                .minimumScaleFactor(0.9)
                             
                             HStack {
                                 VStack(alignment: .leading, spacing: 20) {
@@ -113,23 +101,17 @@ struct JobDetailView: View {
                             
                             VStack(alignment: .leading, spacing: 20) {
                                 
-                                if let email = job.contact?.email {
+                                if let email = job.contact.email {
                                     ContactLabel("Email Address", email)
                                 }
                                 
-                                if let whatsapp = job.contact?.whatsapp {
+                                if let whatsapp = job.contact.whatsapp {
                                     ContactLabel("WhatsApp Number", whatsapp)
-                                }
-                                
-                                if let telegram = job.contact?.telegram {
-                                    ContactLabel("Telegram:", "@\(telegram)")
                                 }
                             }
                             .padding(.vertical, 10)
                         }
                     }
-                    
-                    lazy var randomColor: Color = [.mint, .main, .teal, .cyan, .orange, .green, .yellow, .indigo, .blue, .pink].randomElement()!
 
                     Link(destination: job.jobLink) {
                         Label("Apply Now", systemImage: "link")
@@ -138,7 +120,7 @@ struct JobDetailView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(randomColor)
+                            .background(Color.main)
                             .cornerRadius(15)
                     }
                 }
