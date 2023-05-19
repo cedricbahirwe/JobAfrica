@@ -22,7 +22,7 @@ struct WhatsNewView: View {
                 VStack {
                     Text("JobAfrica")
                         .font(.system(.title, design: .rounded).weight(.heavy))
-                        .foregroundColor(.main)
+                        .foregroundColor(.accentColor)
 
                     Text("Find work you love in Africa.")
                         .font(.headline)
@@ -64,7 +64,7 @@ struct WhatsNewView: View {
                         .font(.body.weight(.semibold))
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
-                        .background(Color.main)
+                        .background(Color.accentColor)
                         .cornerRadius(15)
                         .shadow(color: Color(.darkGray), radius: 3, x: 3, y: 3)
                         .foregroundColor(.white)
@@ -74,6 +74,7 @@ struct WhatsNewView: View {
         }
         .padding()
         .background(Color(.systemBackground))
+        .accentColor(.main)
     }
 
     private func featureView(icon: String, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
@@ -83,7 +84,7 @@ struct WhatsNewView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30)
-                .foregroundColor(.main)
+                .foregroundColor(.accentColor)
 
             VStack(alignment: .leading) {
                 Text(title)

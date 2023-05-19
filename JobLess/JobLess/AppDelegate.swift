@@ -17,7 +17,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
                         
         // Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: K.clientID)
-                
+
+        ColorWrapper.setDefaults()
+        
         GIDSignIn.sharedInstance.configuration = config
         
         Task {
@@ -39,27 +41,15 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
-
 enum K {
     static let clientID = "167509651075-24mq6dteaj3u1gmh8jteba7eqcv8fg7k.apps.googleusercontent.com"
-//    "221523093975-3e37h6unj358l6oid9dn7uhppoi6pdi9.apps.googleusercontent.com"
+
     static let apiKey = "AIzaSyC0SxsNEDJjhI8p9KHUOQOUSF3sAVdv8rk"
-//    "AIzaSyDvU-dCjHmT2CoZVou2uZL0yGhaXxJVDiE"
     
     static let grantedScopes = "https://www.googleapis.com/auth/spreadsheets"
     static let additionalScopes = [
         "https://www.googleapis.com/auth/spreadsheets",
-//        "https://www.googleapis.com/auth/drive",
-        "https://www.googleapis.com/auth/drive.file",
-//        "https://www.googleapis.com/auth/calendar",
-//        "https://www.googleapis.com/auth/youtube",
-//        "https://www.googleapis.com/auth/youtube.force-ssl",
-//        "https://www.googleapis.com/auth/youtube.upload",
-//        "https://www.googleapis.com/auth/youtubepartner"
-    ]
-    //"https://www.googleapis.com/auth/youtube.readonly"]
+        "https://www.googleapis.com/auth/drive.file"]
     
     static let sheetID = "1P3n23dvKgKuhwEpxMnGUMSGY3n2lrHBgu-UpWKQ6V4g"
-    static let calendarId = "primary"
-    
 }

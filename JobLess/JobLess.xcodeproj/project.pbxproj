@@ -12,6 +12,8 @@
 		CB408A7C28CF5B1D0029B91C /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7B28CF5B1D0029B91C /* UserDefaults+.swift */; };
 		CB408A7E28CF5B810029B91C /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A7D28CF5B810029B91C /* WhatsNewView.swift */; };
 		CB408A8228CF62050029B91C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB408A8128CF62050029B91C /* User.swift */; };
+		CB563B3C2A1772CB00CC21C8 /* AppLaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB563B3B2A1772CB00CC21C8 /* AppLaunchView.swift */; };
+		CB563B3E2A1773AA00CC21C8 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB563B3D2A1773AA00CC21C8 /* Gradient.swift */; };
 		CB6E482728CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482828CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
 		CB6E482928CE811A006DF6CA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */; };
@@ -91,6 +93,8 @@
 		CB408A7B28CF5B1D0029B91C /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		CB408A7D28CF5B810029B91C /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
 		CB408A8128CF62050029B91C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CB563B3B2A1772CB00CC21C8 /* AppLaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchView.swift; sourceTree = "<group>"; };
+		CB563B3D2A1773AA00CC21C8 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		CB6E482628CE811A006DF6CA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB6E483D28CE90FF006DF6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB6E484028CE9489006DF6CA /* JobModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobModel.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 				CBC2E69528C8AB7000346EA4 /* JobLessApp.swift */,
 				CB6E483D28CE90FF006DF6CA /* AppDelegate.swift */,
 				CBC2E69728C8AB7000346EA4 /* ContentView.swift */,
+				CB563B3B2A1772CB00CC21C8 /* AppLaunchView.swift */,
 				CB6E484A28CE995F006DF6CA /* SubmitterView.swift */,
 				CB8978A92A1374DF00BD23B9 /* GoogleSheetsAPI.swift */,
 				CB8978B72A1399B700BD23B9 /* SpreadSheetTestView.swift */,
@@ -276,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				CBC2E6C528C8AD0600346EA4 /* Colors+.swift */,
+				CB563B3D2A1773AA00CC21C8 /* Gradient.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
@@ -500,6 +506,7 @@
 				CB408A8228CF62050029B91C /* User.swift in Sources */,
 				CBC2E6DF28C9345C00346EA4 /* MainMenuView.swift in Sources */,
 				CBC2E69628C8AB7000346EA4 /* JobLessApp.swift in Sources */,
+				CB563B3C2A1772CB00CC21C8 /* AppLaunchView.swift in Sources */,
 				CBAC672C2A1507C90027D1FD /* JobHelper.swift in Sources */,
 				CB8978AA2A1374DF00BD23B9 /* GoogleSheetsAPI.swift in Sources */,
 				CBC1426828CB427200C44D64 /* JobDescription.swift in Sources */,
@@ -515,6 +522,7 @@
 				CB6E483E28CE90FF006DF6CA /* AppDelegate.swift in Sources */,
 				CBC1426428CB426600C44D64 /* JobCategory.swift in Sources */,
 				CBC2E6E428C9361000346EA4 /* ThemeToggle.swift in Sources */,
+				CB563B3E2A1773AA00CC21C8 /* Gradient.swift in Sources */,
 				CBC1426C28CB442700C44D64 /* JobSkill.swift in Sources */,
 				CBC1426628CB426D00C44D64 /* JobType.swift in Sources */,
 				CBC1425D28CB3D8C00C44D64 /* Job.swift in Sources */,

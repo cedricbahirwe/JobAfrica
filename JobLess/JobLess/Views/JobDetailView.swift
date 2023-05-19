@@ -9,7 +9,6 @@ import SwiftUI
 
 struct JobDetailView: View {
     private let job: Job
-    private let randomColor: Color = [.mint, .main, .teal, .cyan, .orange, .green, .yellow, .indigo, .blue, .pink].randomElement()!
 
     init(_ job: Job) {
         self.job = job
@@ -19,7 +18,7 @@ struct JobDetailView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            AppGradient.main.ignoresSafeArea(edges: .top)
+            AppGradient.mainGradient.ignoresSafeArea(edges: .top)
                 .frame(height: UIScreen.main.bounds.height*0.2)
                 .overlay(alignment: .bottom) {
                     Color.gray.frame(height: 2)
@@ -121,7 +120,7 @@ struct JobDetailView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(randomColor)
+                            .background(Color.main)
                             .cornerRadius(15)
                     }
                 }
