@@ -45,7 +45,7 @@ struct JobSearchView: View {
 
                 Image(systemName: "arrow.right.circle")
                     .imageScale(.large)
-                    .foregroundColor(.main)
+                    .foregroundColor(.accentColor)
             }
 
             ScrollView {

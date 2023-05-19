@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct JobTagsView: View {
+    @AppStorage(UserDefaultsKeys.appAccentColor)
+    var appAccentColor: Color = .mainRed
+
     init(_ tags: [JobTag], selection: Binding<JobTag>) {
         self.tags = tags
         _selection = selection
@@ -24,11 +27,9 @@ struct JobTagsView: View {
                         .font(.headline)
                         .fontWeight(.medium)
                         .foregroundColor(selection == tag ? .white : Color(.systemBackground))
-//                        .foregroundColor(selection == tag ? .primary : .white)
-//                        .colorInvert()
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        .background(selection == tag ? Color.main : Color.primary)
+                        .background(selection == tag ? appAccentColor : Color.primary)
                         .clipShape(Capsule())
                         .onTapGesture {
                             withAnimation {

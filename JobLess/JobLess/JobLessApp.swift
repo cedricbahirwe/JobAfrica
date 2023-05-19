@@ -16,14 +16,21 @@ struct JobLessApp: App {
 
     @AppStorage(UserDefaultsKeys.showWelcomeView)
     private var showWelcomeView: Bool = true
-
+    
+//    @AppStorage(UserDefaultsKeys.appAccentColor)
+//    var appAccentColor: Color = .mainRed
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .accentColor(.red)
+//                .tint(appAccentColor)
                 .sheet(isPresented: $showWelcomeView) {
                     WhatsNewView(isPresented: $showWelcomeView)
+                        .accentColor(.red)
                 }
                 .preferredColorScheme(appTheme.colorScheme)
+            
         }
     }
 }

@@ -11,13 +11,15 @@ struct NavigationBarView: View {
     var onMenu: () -> Void
     var onSearch: () -> Void
     var onFilter: () -> Void
-
+    @AppStorage(UserDefaultsKeys.appAccentColor)
+    var appAccentColor: Color = .mainRed
+    
     var body: some View {
         HStack(spacing: 20) {
             navBarButton("gear",
                          alignment: .leading,
                          action: onMenu)
-            .foregroundColor(.main)
+            .foregroundColor(appAccentColor)
 
             Spacer()
 

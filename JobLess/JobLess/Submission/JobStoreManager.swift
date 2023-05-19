@@ -18,24 +18,27 @@ final class JobStoreManager: ObservableObject {
     private let db = Firestore.firestore()
     
     init() {
-        // Save User or update existing User
-        try? saveUser(.getMetadata())
-        
-        // Load General Jobs
-        loadJobs {
-            self.generalJobs = $0.map({ $0.toDomainModel() }).sorted(by: { $0.postDate > $1.postDate})
-        }
-        
-        // Load Promo Jobs
-        loadJobs(isPromos: true) {
-            self.promoJobs = $0.map({ $0.toDomainModel() }).sorted(by: { $0.postDate > $1.postDate})
-        }
-
-        // Load Job Tags
-        loadTags {
-            self.jobTags = $0.map({ $0.toDomainModel() }).sorted(by: { $0.rawValue < $1.rawValue})
-        }
+        self.generalJobs = [.customerService, .customerService, .customerService]
     }
+//    init() {
+//        // Save User or update existing User
+//        try? saveUser(.getMetadata())
+//
+//        // Load General Jobs
+//        loadJobs {
+//            self.generalJobs = $0.map({ $0.toDomainModel() }).sorted(by: { $0.postDate > $1.postDate})
+//        }
+//
+//        // Load Promo Jobs
+//        loadJobs(isPromos: true) {
+//            self.promoJobs = $0.map({ $0.toDomainModel() }).sorted(by: { $0.postDate > $1.postDate})
+//        }
+//
+//        // Load Job Tags
+//        loadTags {
+//            self.jobTags = $0.map({ $0.toDomainModel() }).sorted(by: { $0.rawValue < $1.rawValue})
+//        }
+//    }
     
     func loadCompanies(completion: @escaping([JobCompany]) -> Void) {
         getContents(collection: .companies, completion: completion)

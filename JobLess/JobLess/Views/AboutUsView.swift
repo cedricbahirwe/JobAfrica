@@ -13,7 +13,7 @@ struct AboutUsView: View {
 
     private let appVersion = UIApplication.appVersion ?? "1.0"
     private let buildVersion = UIApplication.buildVersion ?? "1"
-
+    
     var body: some View {
         VStack(spacing: 30) {
             Spacer()
@@ -27,7 +27,7 @@ struct AboutUsView: View {
 
                 Text("JobAfrica")
                     .font(.system(.title2, design: .rounded).weight(.bold))
-                    .foregroundColor(.main)
+                    .foregroundColor(.accentColor)
             }
             .padding(.top, 30)
 
@@ -44,7 +44,7 @@ struct AboutUsView: View {
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.secondary)
-                .tint(.main)
+                .tint(.accentColor)
 
             Spacer()
 
@@ -56,7 +56,7 @@ struct AboutUsView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(Color.main)
+                    .background(Color.accentColor)
                     .cornerRadius(15)
             }
             .padding()

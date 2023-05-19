@@ -65,7 +65,7 @@ struct SubmitterView: View {
                                         let isSelected = selectedTags.contains(tag)
                                         Text(tag.formatted)
                                             .padding(10)
-                                            .background(isSelected ? Color.main : Color.secondary)
+                                            .background(isSelected ? Color.accentColor : Color.secondary)
                                             .foregroundColor(.white)
                                             .cornerRadius(14)
                                             .onTapGesture {
@@ -97,7 +97,7 @@ struct SubmitterView: View {
                                 } label: {
                                     Image(systemName: "plus.circle.fill")
                                         .imageScale(.large)
-                                        .foregroundColor(.main)
+                                        .foregroundColor(.accentColor)
                                 }
                             }
 
@@ -115,7 +115,7 @@ struct SubmitterView: View {
                                                 }
                                         }
                                         .padding(10)
-                                        .background(Color.main)
+                                        .background(Color.accentColor)
                                         .cornerRadius(14)
                                         .foregroundColor(.white)
                                     }
@@ -150,7 +150,7 @@ struct SubmitterView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
-                    .background(Color.main)
+                    .background(Color.accentColor)
                     .cornerRadius(15)
             }
             .padding(.horizontal)
@@ -256,11 +256,11 @@ extension SubmitterView {
                     Text("Job Company:")
                     if let selectedCompany = selectedCompany {
                         Text(selectedCompany.name)
-                            .foregroundColor(.main)
+                            .foregroundColor(.accentColor)
                     }
                     Image(systemName: "plus.circle.fill")
                         .imageScale(.large)
-                        .foregroundColor(.main)
+                        .foregroundColor(.accentColor)
                 }
 
                 if companies.isEmpty {
@@ -288,7 +288,7 @@ extension SubmitterView {
 //                    Text("Choose")
 //                        .foregroundColor(.white)
 //                        .padding(10)
-//                        .background(Color.main)
+//                        .background(Color.accentColor)
 //                        .cornerRadius(10)
 //                        .contextMenu {
 //                            ForEach(companies, id:\.self) { company in

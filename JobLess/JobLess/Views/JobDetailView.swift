@@ -9,13 +9,15 @@ import SwiftUI
 
 struct JobDetailView: View {
     private let job: Job
-
+    
     init(_ job: Job) {
         self.job = job
     }
     @EnvironmentObject private var jobStoreManager: JobStoreManager
     @Environment(\.dismiss) private var dismiss
-
+    @AppStorage(UserDefaultsKeys.appAccentColor)
+    private var appAccentColor: Color = .mainRed
+    
     var body: some View {
         VStack(spacing: 0) {
             AppGradient.mainGradient.ignoresSafeArea(edges: .top)
@@ -102,17 +104,17 @@ struct JobDetailView: View {
                             VStack(alignment: .leading, spacing: 20) {
                                 
                                 if let email = job.contact.email {
-                                    ContactLabel("Email Address", email)
+                                    contactLabel("Email Address", email)
                                 }
                                 
                                 if let whatsapp = job.contact.whatsapp {
-                                    ContactLabel("WhatsApp Number", whatsapp)
+                                    contactLabel("WhatsApp Number", whatsapp)
                                 }
                             }
                             .padding(.vertical, 10)
                         }
                     }
-
+                    
                     Link(destination: job.jobLink) {
                         Label("Apply Now", systemImage: "link")
                             .labelStyle(.titleOnly)
@@ -120,7 +122,7 @@ struct JobDetailView: View {
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
-                            .background(Color.main)
+                            .background(appAccentColor)
                             .cornerRadius(15)
                     }
                 }
@@ -138,31 +140,22 @@ struct JobDetailView: View {
     }
 }
 
+private extension JobDetailView {
+    func contactLabel(_ key: String, _ value: String) -> some View {
+        HStack {
+            Text("\(key):").bold()
+            Text(value)
+                .foregroundColor(appAccentColor)
+        }
+    }
+}
+
 #if DEBUG
 struct JobDetailView_Previews: PreviewProvider {
     static var previews: some View {
         JobDetailView(.customerService)
             .environmentObject(JobStoreManager())
-//            .preferredColorScheme(.dark)
+        //            .preferredColorScheme(.dark)
     }
 }
 #endif
-
-extension JobDetailView {
-    struct ContactLabel: View {
-        private let key: String
-        private let value: String
-        init(_ key: String, _ value: String) {
-            self.key = key
-            self.value = value
-        }
-
-        var body: some View {
-            HStack {
-                Text("\(key):").bold()
-                Text(value)
-                    .foregroundColor(.main)
-            }
-        }
-    }
-}

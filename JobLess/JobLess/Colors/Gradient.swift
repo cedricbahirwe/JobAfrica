@@ -20,7 +20,7 @@ enum AppGradient {
         )
     }
     
-    static let randomColors: [Color] = [.mint, .main, .teal, .cyan, .orange, .green, .yellow, .indigo, .blue, .pink]
+    static let randomColors: [Color] = [.mint,  .teal, .cyan, .blue, .green, .orange, .yellow, .indigo, .purple, .pink, .mainRed, .red]
     
     static var randomColor: Color {
         randomColors.randomElement()!

@@ -8,78 +8,73 @@
 import SwiftUI
 
 extension Color {
-    static var main: Color {
-        ColorWrapper.getColor() ?? Color("primary.red")
-    }
+    static var mainRed = Color("primary.red")
 
-    static let foreground = Color(.systemBackground)
-    
     static let darkerBackground = Color(red: 15/255, green: 21/255, blue: 27/255)
 }
 
-enum ColorWrapper {
+extension Color: RawRepresentable {
     
-    static func setDefaults(_ color: Color = AppGradient.randomColor) {
-        let defaults = UserDefaults.standard
-
-        guard defaults.data(forKey: UserDefaultsKeys.appAccentColor) == nil else { return }
-        saveColor(color)
-    }
-    
-    static func saveColor(_ color: Color) {
-        guard let colorData = color.encode() else { return }
-        UserDefaults.standard.setValue(colorData, forKey: UserDefaultsKeys.appAccentColor)
-    }
-    
-    static func getColor() -> Color? {
-        guard let colorData = UserDefaults.standard.data(forKey: UserDefaultsKeys.appAccentColor) else { return nil }
-        guard let uiColor = Color.decode(data: colorData) else { return nil }
-        return Color(uiColor)
-    }
-}
-
-extension Color {
-    func encode() -> Data? {
-        do {
-            return try NSKeyedArchiver.archivedData(withRootObject: UIColor(self), requiringSecureCoding: false)//.base64EncodedData()
-        } catch {
-            print("Error encoding color:", error)
-            return nil
+    public init?(rawValue: String) {
+        if let components = UserDefaults.standard.object(forKey: UserDefaultsKeys.appAccentColor) as? [CGFloat], components.count >= 4 {
+            let color = Color(.sRGB,
+                              red: components[0],
+                              green: components[1],
+                              blue: components[2],
+                              opacity: components[3])
+            self = color
+        } else {
+            self = .mainRed
         }
     }
     
-    static func decode(data: Data) -> UIColor? {
-        do {
-            return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIColor
-        } catch {
-            print("Error decoding color:", error)
-            return nil
+    public var rawValue: String {
+        if let components = UIColor(self).cgColor.components {
+            UserDefaults.standard.set(components, forKey: UserDefaultsKeys.appAccentColor)
+            return components.map { String(describing: $0) }.joined(separator: "-")
+        } else {
+            return ""
         }
     }
+    
+    func isEqualTo(_ c2: Color) -> Bool {
+        self.rawValue == c2.rawValue
+    }
 }
-
-//extension Color: RawRepresentable {
+    
 //    public init?(rawValue: String) {
-//        guard let data = Data(base64Encoded: rawValue) else {
-//            self = Color.main
+//
+//        guard let data = Data(base64Encoded: rawValue) else{
+//            self = .mainRed
 //            return
 //        }
+//
 //        do {
-//            let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIColor ?? UIColor(Color.main)
-//            
-//            self = Color(color)
+//            if let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIColor {
+//                self =  Color(color)
+//            } else {
+//                self = .mainRed
+//            }
 //        } catch {
-//            self = .gray
+//            self = .mainRed
 //        }
 //    }
-//    
+    
 //    public var rawValue: String {
 //        do {
-//            let data = try NSKeyedArchiver.archivedData(withRootObject: UIColor(self), requiringSecureCoding: false) as Data
-//
-//            return data.base64EncodedString()
+//            if let components = UIColor(self).cgColor.components {
+//                UserDefaults.standard.set(components, forKey: UserDefaultsKeys.appAccentColor)
+//                return ""
+//            } else {
+//                return ""
+//            }
 //        } catch {
 //            return ""
 //        }
 //    }
-//}
+    
+//    func isEqualTo(_ c2: Color) -> Bool {
+//        self.rawValue == c2.rawValue
+//    }
+    
+

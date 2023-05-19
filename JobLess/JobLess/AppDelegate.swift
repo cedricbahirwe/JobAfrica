@@ -18,7 +18,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         // Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: K.clientID)
 
-        ColorWrapper.setDefaults()
+        
+//        ColorWrapper.setDefaults()
         
         GIDSignIn.sharedInstance.configuration = config
         

@@ -74,7 +74,7 @@ struct HomeView: View {
 
             SettingsView(isPresented: $showMenu, screenSize: screenSize)
 
-            AppLaunchView(jobStoreManager.isLoading, 0.9)
+//            AppLaunchView(jobStoreManager.isLoading, 0.9)
         }
         .fullScreenCover(item: $selectedJob,
                content: JobDetailView.init)

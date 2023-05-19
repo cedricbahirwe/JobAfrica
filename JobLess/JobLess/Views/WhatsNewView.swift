@@ -9,7 +9,9 @@ import SwiftUI
 
 struct WhatsNewView: View {
     @Binding var isPresented: Bool
-
+    @AppStorage(UserDefaultsKeys.appAccentColor)
+    var appAccentColor: Color = .mainRed
+    
     var body: some View {
         VStack(spacing: 20) {
             VStack(spacing: 10) {
@@ -74,7 +76,10 @@ struct WhatsNewView: View {
         }
         .padding()
         .background(Color(.systemBackground))
-        .accentColor(.main)
+        .accentColor(appAccentColor)
+        .onAppear() {
+            appAccentColor = AppGradient.randomColor
+        }
     }
 
     private func featureView(icon: String, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {

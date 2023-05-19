@@ -11,6 +11,10 @@ struct SettingsView: View {
     @Binding var isPresented: Bool
     let screenSize: CGSize
     @State private var presentAboutView: Bool = false
+    private let columns = Array(repeating: GridItem(), count: 4)
+    
+    @AppStorage(UserDefaultsKeys.appAccentColor)
+    var appAccentColor: Color = .mainRed
     
     var body: some View {
         VStack {
@@ -29,7 +33,7 @@ struct SettingsView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 25)
-                            .foregroundColor(.main)
+                            .foregroundColor(appAccentColor)
                     }
                 }
                 .padding(.horizontal)
@@ -37,13 +41,13 @@ struct SettingsView: View {
                 Form {
                     
                     HStack {
-                        MenuItemView("Jobs", "Home", action: {
+                        optionView("Jobs", "Home", action: {
                             withAnimation {
                                 isPresented.toggle()
                             }
                         })
                         
-                        MenuItemView("About", "JobAfrica", action: {
+                        optionView("About", "JobAfrica", action: {
                             presentAboutView.toggle()
                         })
                     }
@@ -64,6 +68,40 @@ struct SettingsView: View {
                                  "Rate us on AppStore",
                                  URL(string: "https://apps.apple.com/us/app/kongoinfo/id6448764651?action=write-review")!)
                     }
+                    
+                    Section {
+                        LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+                            ForEach(AppGradient.randomColors, id: \.self) { color in
+                                color
+                                    .frame(maxWidth: .infinity)
+                                    .scaledToFit()
+                                    .cornerRadius(15, antialiased: false)
+                                    .padding(appAccentColor.isEqualTo(color) ? 10 : 0)
+                                    .overlay {
+                                        if appAccentColor.isEqualTo(color) {
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .strokeBorder(color, lineWidth: 1)
+                                        }
+                                    }
+                                    .onAppear() {
+                                        isEqual(appAccentColor, color)
+                                    }
+                                    .onTapGesture {
+                                        
+                                        withAnimation(.spring()) {
+                                            
+                                            appAccentColor = color
+                                        }
+                                    }
+                            }
+                        }
+                    } header: {
+                        Text("App Main Color")
+                    } footer: {
+                        Text("The selected color will be used to highlight interactive elements in the user interface.")
+                    }
+                    
+                    
                 }
                 
                 ThemeToggle { _ in
@@ -80,9 +118,17 @@ struct SettingsView: View {
         .background(Color(.systemGroupedBackground))
         .offset(x: isPresented ? -screenSize.width*0.1 : -screenSize.width)
         .colorScheme(.dark)
-        .sheet(isPresented: $presentAboutView, content: AboutUsView.init)
+        .sheet(isPresented: $presentAboutView) { AboutUsView().accentColor(appAccentColor) }
+        
     }
     
+    private func isEqual(_ c1: Color, _ c2: Color)  {
+        let co1 = UIColor(c1).cgColor
+        let co2 = UIColor(c2).cgColor
+        
+        print("Les ", co1 == co2)
+//        return c1.rawValue == c2.rawValue
+    }
     private func formLink(_ icon : String, _ title: String, _ link: URL) -> some View {
         Link(destination: link) {
             Label {
@@ -90,7 +136,7 @@ struct SettingsView: View {
                     .foregroundColor(.primary)
             } icon: {
                 Image(systemName: icon)
-                    .foregroundColor(.main)
+                    .foregroundColor(appAccentColor)
             }
         }
         .font(.body.weight(.medium))
@@ -101,43 +147,27 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(isPresented: .constant(true),
                      screenSize: UIScreen.main.bounds.size)
-        .preferredColorScheme(.light)
-        SettingsView(isPresented: .constant(true),
-                     screenSize: UIScreen.main.bounds.size)
-        .preferredColorScheme(.dark)
     }
 }
 
-extension SettingsView {
-    struct MenuItemView: View {
-        init(_ title: String,
-             _ subtitle: String,
-             action: @escaping () -> Void) {
-            self.title = title
-            self.subtitle = subtitle
-            self.action = action
+private extension SettingsView {
+    func optionView(_ title: String,
+                    _ subtitle: String,
+                    action: @escaping () -> Void) -> some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text(title)
+                .font(.callout)
+                .bold()
+            Text(subtitle)
+                .font(.title2.weight(.regular))
+                .foregroundColor(appAccentColor)
         }
-        
-        let title: String
-        let subtitle: String
-        var action: () -> Void
-        
-        var body: some View {
-            VStack(alignment: .leading, spacing: 15) {
-                Text(title)
-                    .font(.callout)
-                    .bold()
-                Text(subtitle)
-                    .font(.title2.weight(.regular))
-                    .foregroundColor(.main)
-            }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .frame(height: 80)
-            .background(.ultraThinMaterial)
-            .background(.black.opacity(0.1))
-            .cornerRadius(16)
-            .onTapGesture(perform: action)
-        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(height: 80)
+        .background(.ultraThinMaterial)
+        .background(.black.opacity(0.1))
+        .cornerRadius(16)
+        .onTapGesture(perform: action)
     }
 }
