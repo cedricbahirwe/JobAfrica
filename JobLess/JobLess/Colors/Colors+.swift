@@ -15,66 +15,21 @@ extension Color {
 
 extension Color: RawRepresentable {
     
+    
     public init?(rawValue: String) {
-        if let components = UserDefaults.standard.object(forKey: UserDefaultsKeys.appAccentColor) as? [CGFloat], components.count >= 4 {
-            let color = Color(.sRGB,
-                              red: components[0],
-                              green: components[1],
-                              blue: components[2],
-                              opacity: components[3])
-            self = color
-        } else {
-            self = .mainRed
-        }
+        let data = Data(base64Encoded: rawValue)!
+        let color = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! UIColor
+        self =  Color(color)
     }
     
     public var rawValue: String {
-        if let components = UIColor(self).cgColor.components {
-            UserDefaults.standard.set(components, forKey: UserDefaultsKeys.appAccentColor)
-            return components.map { String(describing: $0) }.joined(separator: "-")
-        } else {
-            return ""
-        }
-    }
-    
-    func isEqualTo(_ c2: Color) -> Bool {
-        self.rawValue == c2.rawValue
+        let data = try! NSKeyedArchiver.archivedData(withRootObject: UIColor(self), requiringSecureCoding: false) as Data
+        return data.base64EncodedString()
     }
 }
-    
-//    public init?(rawValue: String) {
-//
-//        guard let data = Data(base64Encoded: rawValue) else{
-//            self = .mainRed
-//            return
-//        }
-//
-//        do {
-//            if let color = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UIColor {
-//                self =  Color(color)
-//            } else {
-//                self = .mainRed
-//            }
-//        } catch {
-//            self = .mainRed
-//        }
-//    }
-    
-//    public var rawValue: String {
-//        do {
-//            if let components = UIColor(self).cgColor.components {
-//                UserDefaults.standard.set(components, forKey: UserDefaultsKeys.appAccentColor)
-//                return ""
-//            } else {
-//                return ""
-//            }
-//        } catch {
-//            return ""
-//        }
-//    }
-    
-//    func isEqualTo(_ c2: Color) -> Bool {
-//        self.rawValue == c2.rawValue
-//    }
-    
 
+extension Color {
+    func isEqualTo(_ c2: Color) -> Bool {
+        UIColor(self).cgColor.components! == UIColor(c2).cgColor.components!
+    }
+}

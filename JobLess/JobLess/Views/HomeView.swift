@@ -23,6 +23,9 @@ struct HomeView: View {
         jobStoreManager.generalJobs :
         jobStoreManager.generalJobs.filter({ $0.title.lowercased() == searchEntry.lowercased() })
     }
+    
+    @AppStorage(UserDefaultsKeys.appAccentColor)
+    var appAccentColor: Color = .mainRed
 
     @StateObject var sheetStore = GoogleSheetsAPI()
     var body: some View {
@@ -72,9 +75,9 @@ struct HomeView: View {
 //                .offset(x: showSearch ? 0 : -80)
 //                .allowsHitTesting(showSearch)
 
-            SettingsView(isPresented: $showMenu, screenSize: screenSize)
+            SettingsView(isPresented: $showMenu, screenSize: screenSize, appAccentColor: $appAccentColor)
 
-//            AppLaunchView(jobStoreManager.isLoading, 0.9)
+            AppLaunchView(jobStoreManager.isLoading, 0.9)
         }
         .fullScreenCover(item: $selectedJob,
                content: JobDetailView.init)

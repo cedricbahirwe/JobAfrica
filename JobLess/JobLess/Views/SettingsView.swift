@@ -13,8 +13,16 @@ struct SettingsView: View {
     @State private var presentAboutView: Bool = false
     private let columns = Array(repeating: GridItem(), count: 4)
     
-    @AppStorage(UserDefaultsKeys.appAccentColor)
-    var appAccentColor: Color = .mainRed
+    @Binding var appAccentColor: Color
+    
+    @State private var internalAccentColor: Color
+    
+    init(isPresented: Binding<Bool>, screenSize: CGSize, appAccentColor: Binding<Color>) {
+        self._isPresented = isPresented
+        self.screenSize = screenSize
+        self._appAccentColor = appAccentColor
+        self._internalAccentColor = State(initialValue: appAccentColor.wrappedValue)
+    }
     
     var body: some View {
         VStack {
@@ -71,29 +79,30 @@ struct SettingsView: View {
                     
                     Section {
                         LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                            ForEach(AppGradient.randomColors, id: \.self) { color in
+                            ForEach(AppGradient.randomColors, id: \.self) { uiColor in
+                                let color = Color(uiColor)
                                 color
                                     .frame(maxWidth: .infinity)
                                     .scaledToFit()
                                     .cornerRadius(15, antialiased: false)
-                                    .padding(appAccentColor.isEqualTo(color) ? 10 : 0)
+                                    .padding(internalAccentColor.isEqualTo(color) ? 10 : 0)
                                     .overlay {
-                                        if appAccentColor.isEqualTo(color) {
+                                        if internalAccentColor.isEqualTo(color) {
                                             RoundedRectangle(cornerRadius: 15)
                                                 .strokeBorder(color, lineWidth: 1)
                                         }
                                     }
                                     .onAppear() {
-                                        isEqual(appAccentColor, color)
+                                        isEqual(internalAccentColor, color)
                                     }
                                     .onTapGesture {
-                                        
                                         withAnimation(.spring()) {
-                                            
-                                            appAccentColor = color
+                                            internalAccentColor = color
                                         }
+                                        appAccentColor = color
                                     }
                             }
+                            
                         }
                     } header: {
                         Text("App Main Color")
@@ -126,7 +135,16 @@ struct SettingsView: View {
         let co1 = UIColor(c1).cgColor
         let co2 = UIColor(c2).cgColor
         
+        
+        let components1 = co1.components!
+        let components2 = co2.components!
+        
+        print("========================")
         print("Les ", co1 == co2)
+
+        print("Ennohter:", components1, components2)
+        print("finals", appAccentColor.isEqualTo(c2))
+     
 //        return c1.rawValue == c2.rawValue
     }
     private func formLink(_ icon : String, _ title: String, _ link: URL) -> some View {
@@ -143,12 +161,12 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView(isPresented: .constant(true),
-                     screenSize: UIScreen.main.bounds.size)
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingsView(isPresented: .constant(true),
+//                     screenSize: UIScreen.main.bounds.size)
+//    }
+//}
 
 private extension SettingsView {
     func optionView(_ title: String,

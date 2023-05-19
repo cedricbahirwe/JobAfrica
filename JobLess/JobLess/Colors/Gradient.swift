@@ -20,9 +20,9 @@ enum AppGradient {
         )
     }
     
-    static let randomColors: [Color] = [.mint,  .teal, .cyan, .blue, .green, .orange, .yellow, .indigo, .purple, .pink, .mainRed, .red]
+    static let randomColors: [UIColor] = [Color.mint,  .teal, .cyan, .blue, .green, .orange, .yellow, .indigo, .purple, .pink, .mainRed, .red].map(UIColor.init)
     
     static var randomColor: Color {
-        randomColors.randomElement()!
+        Color(randomColors.randomElement()!)
     }
 }
