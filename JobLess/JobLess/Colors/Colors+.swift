@@ -30,6 +30,6 @@ extension Color: RawRepresentable {
 
 extension Color {
     func isEqualTo(_ c2: Color) -> Bool {
-        UIColor(self).cgColor.components! == UIColor(c2).cgColor.components!
+        UIColor(self).cgColor.components!.map({ String(format: "%.3f", $0) }) == UIColor(c2).cgColor.components!.map({ String(format: "%.3f", $) })
     }
 }

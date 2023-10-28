@@ -108,9 +108,7 @@ struct SettingsView: View {
                         Text("App Main Color")
                     } footer: {
                         Text("The selected color will be used to highlight interactive elements in the user interface.")
-                    }
-                    
-                    
+                    } 
                 }
                 
                 ThemeToggle { _ in
@@ -128,6 +126,10 @@ struct SettingsView: View {
         .offset(x: isPresented ? -screenSize.width*0.1 : -screenSize.width)
         .colorScheme(.dark)
         .sheet(isPresented: $presentAboutView) { AboutUsView().accentColor(appAccentColor) }
+        .onChange(of: isPresented) { newValue in
+            print("Change happened", newValue)
+            isEqual(appAccentColor, internalAccentColor)
+        }
         
     }
     
